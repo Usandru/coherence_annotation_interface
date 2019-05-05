@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col">
+    <div class="text-right">
+        <select name="sets" [(ngModel)]="selectSet">
+          <option [ngValue]="item" *ngFor="let item of sets">{{item.name}}</option>
+        </select>
+    </div>
+  </div>
+  <div class="col">
+    <input type="text" name="args" id="args" [(ngModel)]="args" [value]="args" class="form-control">
+  </div>
+</div>
+  
+<div class="row justify-content-center">
+    <div class="text-center">
+      <br>
+      <button (click)="onConfirm()" style="width : 10em">Confirm</button>
+    </div>
+</div>
