@@ -41,6 +41,9 @@ class Annotate(Resource):
         nextJSON = allSessions[serverConfig["id"]].getNextAnnotation()
         if nextJSON == None:
             serverConfig["id"] = serverConfig["id"] + 1
+            init = open('.\serv_data\init.cfg', "w")
+            json.dump(serverConfig, init)
+            init.close()
             return jsonify({"LeftText": "Select annotation set", "RightText": "specify options", "InputMethod": "selector"})
         else:
             return jsonify(nextJSON)

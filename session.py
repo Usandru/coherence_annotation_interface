@@ -11,9 +11,15 @@ class Session:
             self.mode = ["slider" for x in range(len(self.pairs))]
         elif mode == "scale":
             self.mode = ["scale" for x in range(len(self.pairs))]
+        elif mode == "split":
+            self.mode = ["binary" if x % 2 == 0 else "slider" for x in range(len(self.pairs))]
+            random.shuffle(self.mode)
+        elif mode == "short":
+            self.mode = ["binary" if x % 2 == 0 else "slider" for x in range(10)]
+            random.shuffle(self.mode)
         self.pos_track = 0
         self.prev_time = time.clock()
-        self.dataPath = '.\sessions\log_' + path + "_id" + str(id) + ".txt"
+        self.dataPath = '.\sessions\log_' + path[:-4] + "_id" + str(id) + ".txt"
         session_log = open(self.dataPath, "w", encoding="utf-8")
         session_log.write("start_" + str(self.prev_time) + "_0\n")
         session_log.close()
@@ -22,7 +28,7 @@ class Session:
         data_file = open(path, encoding="utf-8")
         data = data_file.read()
         data_file.close()
-        return data.split("|||")
+        return [x.strip() for x in data.split("|||")]
 
     def prepareAnnotationData(self, path):
         textList = self.retrieveAnnotationData(path)
@@ -35,7 +41,7 @@ class Session:
         return (textList, pairs)
 
     def getNextAnnotation(self):
-        if self.pos_track >= len(self.pairs):
+        if self.pos_track >= len(self.mode):
             return None
         else:
             next_pair = self.pairs[self.pos_track]
