@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'experiment';
+  isCollapsed = true;
 
   text1:String = 'default';
   text2:String = 'default';

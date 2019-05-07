@@ -12,6 +12,7 @@ import { SelectorComponent } from './selector/selector.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AlertModule } from 'ngx-bootstrap';
     Ng5SliderModule,
     HttpClientModule,
     AlertModule.forRoot(),
-    FormsModule
+    FormsModule,
+    CollapseModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
