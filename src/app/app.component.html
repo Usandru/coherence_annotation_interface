@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="fixedpos">
   <app-slider *ngIf="State === 'slider'" (confirm)="annotate($event)"></app-slider>
   <app-binary *ngIf="State === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
   <app-scale *ngIf="State === 'scale'" (confirm)="annotate($event)"></app-scale>
