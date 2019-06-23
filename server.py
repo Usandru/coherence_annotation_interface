@@ -26,10 +26,11 @@ def hello():
 class NewSession(Resource):
     def put(self):
         keywords = request.get_json()["session"].split(" ")
-        subset = serverConfig[keywords[0]]
-        interval_a = keywords[1]
-        interval_b = keywords[2]
-        mode = keywords[3]
+        subset = keywords[0]
+        interval_a = int(keywords[1])
+        interval_b = int(keywords[2])
+        mode = int(keywords[3])
+        print(keywords)
         allSessions[serverConfig["id"]] = session.Session(serverConfig["id"], subset, interval_a, interval_b, mode)
         return
 
