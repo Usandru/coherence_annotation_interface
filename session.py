@@ -1,30 +1,87 @@
 import random
 import time
+from Document_Preprocessing import utils
 
+## THERE ARE TWO DIFFERENT TYPES OF MODE - THIS NEEDS TO BE FIXED
 class Session:
-    def __init__(self, id, path, mode):
-        full_path = "./serv_data/" + path
-        self.textList, self.pairs = self.prepareAnnotationData(full_path)
-        if mode == "binary":
-            self.mode = ["binary" for x in range(len(self.pairs))]
-        elif mode == "slider":
-            self.mode = ["slider" for x in range(len(self.pairs))]
-        elif mode == "scale":
-            self.mode = ["scale" for x in range(len(self.pairs))]
-        elif mode == "split":
-            self.mode = ["binary" if x % 2 == 0 else "slider" for x in range(len(self.pairs))]
-            random.shuffle(self.mode)
-        elif mode == "short":
-            self.mode = ["binary" if x % 2 == 0 else "slider" for x in range(10)]
-            random.shuffle(self.mode)
+    def __init__(self, id, subset, interval_a, interval_b, mode):
+        self.subset_path = "./serv_data/" + subset + "/"
+        self.text_source_list = list()
+        self.text_id_dict = dict()
+        self.pairs = list()
+        self.current_pair = list()
+
+        #Index values for each text-cluster modified by Mode (3 patterns)
+        A = (0 + int(mode)) % 3 + 4
+        B = (1 + int(mode)) % 3 + 4
+        C = (2 + int(mode)) % 3 + 4
+        
+        #Index values for which text in the two text pairs to use, modified by Mode (4 patterns)
+        X = mode % 2
+        Y = (mode // 2) % 2 + 2
+
+        #CSV file column ids:
+        text_id = 6
+        text_tag = 5
+        text_content = 3
+
+        for i in range(interval_a, interval_b):
+            self.text_source_list.append(utils.get_csv(self.subset_path + str(i) + ".csv"))
+
+        for source in self.text_source_list:
+            for text in source:
+                if text[text_id] in self.text_id_dict:
+                    self.text_id_dict[text[text_id]][text[text_tag]] = text[text_content]
+                else:
+                    self.text_id_dict[text[text_id]] = {text_tag : text_content}
+
+        mode_counter = 0
+        #Generates the 8 internal pairs for each cluster of 5 + 2 texts, total 8 * len(source)
+        for source in self.text_source_list:
+            if (mode_counter + mode) % 2 == 0:
+                current_mode = "slider"
+            else:
+                current_mode = "binary"
+            mode_counter += 1
+
+            self.pairs.extend([
+                ((source[0][text_id], source[0][text_tag]), (source[1][text_id], source[1][text_tag]), current_mode),
+                ((source[2][text_id], source[2][text_tag]), (source[3][text_id], source[3][text_tag]), current_mode),
+                ((source[X][text_id], source[X][text_tag]), (source[Y][text_id], source[Y][text_tag]), current_mode),
+                ((source[1][text_id], source[1][text_tag]), (source[A][text_id], source[A][text_tag]), current_mode),
+                ((source[3][text_id], source[3][text_tag]), (source[A][text_id], source[A][text_tag]), current_mode),
+                ((source[0][text_id], source[0][text_tag]), (source[C][text_id], source[C][text_tag]), current_mode),
+                ((source[2][text_id], source[2][text_tag]), (source[B][text_id], source[B][text_tag]), current_mode),
+                ((source[B][text_id], source[B][text_tag]), (source[C][text_id], source[C][text_tag]), current_mode)
+            ])
+
+        mode_counter = 0
+        #Adds a redundant pair if there is only one source document
+        for i in range(len(source)):
+            if (mode_counter + mode) % 2 == 1:
+                current_mode = "slider"
+            else:
+                current_mode = "binary"
+            mode_counter += 1
+            self.pairs.extend([
+                ((source[i][A][text_id], source[i][A][text_tag]), (source[(i + 1) % len(source)][B][text_id], source[(i + 1) % len(source)][B][text_tag]), current_mode),
+                ((source[i][A][text_id], source[i][A][text_tag]), (source[(i + 1) % len(source)][C][text_id], source[(i + 1) % len(source)][C][text_tag]), current_mode),
+                ((source[i][X][text_id], source[i][X][text_tag]), (source[(i + 1) % len(source)][Y][text_id], source[(i + 1) % len(source)][Y][text_tag]), current_mode)
+            ])
+
+        print(self.pairs)
+        print(len(self.pairs))
+
+        random.shuffle(self.pairs)
+
         self.pos_track = 0
         self.prev_time = time.clock()
-        self.dataPath = '.\sessions\log_' + path[:-4] + "_id" + str(id) + ".txt"
+        self.dataPath = '.\sessions\log_id' + str(id) + ".txt"
         session_log = open(self.dataPath, "w", encoding="utf-8")
         session_log.write("start_" + str(self.prev_time) + "_0\n")
         session_log.close()
 
-    def retrieveAnnotationData(self, path):
+"""     def retrieveAnnotationData(self, path):
         data_file = open(path, encoding="utf-8")
         data = data_file.read()
         data_file.close()
@@ -38,21 +95,28 @@ class Session:
                 pairs.append([str(p1),str(p2)])
                 random.shuffle(pairs[-1])
         random.shuffle(pairs)
-        return (textList, pairs)
+        return (textList, pairs) """
 
     def getNextAnnotation(self):
-        if self.pos_track >= len(self.mode):
+        if self.pos_track >= len(self.pairs):
             return None
         else:
-            next_pair = self.pairs[self.pos_track]
-            next_mode = self.mode[self.pos_track]
+            text1_id = self.pairs[self.pos_track][0]
+            text2_id = self.pairs[self.pos_track][1]
+            mode = self.pairs[self.pos_track][2]
+            self.current_pair = [text1_id, text2_id]
+            random.shuffle(self.current_pair)
             self.pos_track = self.pos_track + 1
-            return {"LeftText": self.textList[int(next_pair[0])], "RightText": self.textList[int(next_pair[1])], "InputMethod": next_mode}
+            return {"LeftText": self.text_id_dict[self.current_pair[0][0]][self.current_pair[0][1]], 
+                    "RightText": self.text_id_dict[self.current_pair[1][0]][self.current_pair[1][1]],
+                    "InputMethod": mode
+                    }
 
     def writeToSessionLog(self, log_content):
         curr_time = time.clock()
         session_log = open(self.dataPath, "a", encoding="utf-8")
-        session_log.write("_".join(self.pairs[self.pos_track - 1]) + "_" + 
+        session_log.write(self.current_pair[0][0] + "-" + self.current_pair[0][1] + "_" + 
+                          self.current_pair[1][0] + "-" + self.current_pair[1][1] + "_" +
                             log_content + "_" + 
                             str(curr_time) + "_" + str(curr_time - self.prev_time) + "\n")
         session_log.close()

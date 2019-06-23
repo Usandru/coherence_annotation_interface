@@ -14,7 +14,25 @@ export class SliderComponent implements OnInit {
     ceil: 100,
     step: 0.1,
     hideLimitLabels: true,
-    hidePointerLabels: true
+    hidePointerLabels: true,
+    ticksArray: [-100, -50, 0, 50, 100],
+    getLegend: (value: number): string => {
+      if(value === -100) {
+        return 'Meget';
+      }
+      if (value === -50) {
+        return 'Mellem';
+      }
+      if(value === 0) {
+        return 'Start';
+      }
+      if(value === 100) {
+        return 'Meget';
+      }
+      if (value === 50) {
+        return 'Mellem';
+      }
+    }
   }
 
   logText: string = '';

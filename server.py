@@ -25,10 +25,12 @@ def hello():
 
 class NewSession(Resource):
     def put(self):
-        keywords = request.get_json()["session"].split("_")
-        path = serverConfig[keywords[0]]
-        mode = keywords[1]
-        allSessions[serverConfig["id"]] = session.Session(serverConfig["id"], path, mode)
+        keywords = request.get_json()["session"].split(" ")
+        subset = serverConfig[keywords[0]]
+        interval_a = keywords[1]
+        interval_b = keywords[2]
+        mode = keywords[3]
+        allSessions[serverConfig["id"]] = session.Session(serverConfig["id"], subset, interval_a, interval_b, mode)
         return
 
 class Annotate(Resource):
@@ -44,7 +46,7 @@ class Annotate(Resource):
             init = open('.\serv_data\init.cfg', "w")
             json.dump(serverConfig, init)
             init.close()
-            return jsonify({"LeftText": "Select annotation set", "RightText": "specify options", "InputMethod": "selector"})
+            return jsonify({"LeftText": "", "RightText": "", "InputMethod": "selector"})
         else:
             return jsonify(nextJSON)
 

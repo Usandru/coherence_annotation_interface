@@ -9,21 +9,21 @@ export class SelectorComponent implements OnInit {
 
   constructor() { }
 
-  selectSet;
+//  selectSet;
   args: string;
 
-  sets = [
+/*   sets = [
     {id: 1, name:'set1'},
     {id: 2, name:'set2'},
-];
+]; */
   
   ngOnInit() {
   }
 
   @Output() startSession: EventEmitter<any> = new EventEmitter();
     onConfirm() {
-        console.log(this.selectSet.name + "_" + this.args)
-        this.startSession.emit(this.selectSet.name + "_" + this.args);
+        console.log(this.args) //this.selectSet.name + "_" + 
+        this.startSession.emit(this.args); //this.selectSet.name + "_" + 
     }
 
   

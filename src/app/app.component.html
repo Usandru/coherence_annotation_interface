@@ -9,9 +9,11 @@
   </div>
 </div>
 
+<br>
+
 <div style="text-align:center">
   <h1>
-    Coherence Annotation
+    
   </h1>
 </div>
 
@@ -31,7 +33,7 @@
   </div>
 </div>
 
-<div class="fixedpos">
+<div class="col-md-4 offset-md-4">
   <app-slider *ngIf="State === 'slider'" (confirm)="annotate($event)"></app-slider>
   <app-binary *ngIf="State === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
   <app-scale *ngIf="State === 'scale'" (confirm)="annotate($event)"></app-scale>

@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   title = 'experiment';
   isCollapsed = true;
 
-  text1:String = 'default';
-  text2:String = 'default';
+  text1:String = '';
+  text2:String = '';
   ExperimentState:JSON;
   State:String = 'selector';
 
