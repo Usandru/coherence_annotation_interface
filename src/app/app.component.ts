@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   text2:String = '';
   ExperimentState:JSON;
   State:String = 'selector';
+  flask_serv_path:String = 'http://52.31.82.25:5002/';
 
 
   constructor(private httpClient: HttpClient) {
@@ -25,8 +26,8 @@ export class AppComponent implements OnInit {
   }
 
   annotate(evt) {
-    this.httpClient.put('http://127.0.0.1:5002/annotate', {'annotation': evt}).subscribe(nothing => {
-    this.httpClient.get('http://127.0.0.1:5002/annotate').subscribe(data => {
+    this.httpClient.put(this.flask_serv_path + 'annotate', {'annotation': evt}).subscribe(nothing => {
+    this.httpClient.get(this.flask_serv_path + 'annotate').subscribe(data => {
       this.ExperimentState = data as JSON;
       this.State = this.ExperimentState["InputMethod"];
       this.text1 = this.ExperimentState["LeftText"]
@@ -37,8 +38,8 @@ export class AppComponent implements OnInit {
 
   newSession(evt) {
     console.log(evt)
-    this.httpClient.put('http://127.0.0.1:5002/session', {'session': evt}).subscribe(nothing =>{
-    this.httpClient.get('http://127.0.0.1:5002/annotate').subscribe(data => {
+    this.httpClient.put(this.flask_serv_path + 'session', {'session': evt}).subscribe(nothing =>{
+    this.httpClient.get(this.flask_serv_path + 'annotate').subscribe(data => {
       this.ExperimentState = data as JSON;
       this.State = this.ExperimentState["InputMethod"];
       this.text1 = this.ExperimentState["LeftText"]
