@@ -13,6 +13,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     HttpClientModule,
     AlertModule.forRoot(),
     FormsModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
