@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   text2:String = '';
   ExperimentState:JSON;
   State:String = 'selector';
-  flask_serv_path:String = 'http://52.31.82.25:5002/';
+  flask_serv_path:String = 'http://52.31.82.25:80/';
 
 
   constructor(private httpClient: HttpClient) {

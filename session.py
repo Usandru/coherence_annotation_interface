@@ -5,7 +5,7 @@ from Document_Preprocessing import utils
 ## THERE ARE TWO DIFFERENT TYPES OF MODE - THIS NEEDS TO BE FIXED
 class Session:
     def __init__(self, id, subset, interval_a, interval_b, mode):
-        self.subset_path = "./serv_data/" + subset + "/"
+        self.subset_path = "C:/data/serv_data/" + subset + "/"
         self.text_source_list = list()
         self.text_id_dict = dict()
         self.pairs = list()
@@ -86,7 +86,7 @@ class Session:
 
         self.pos_track = 0
         self.prev_time = time.clock()
-        self.dataPath = '.\sessions\log_id' + str(id) + ".txt"
+        self.dataPath = 'C:\data\sessions\log_id' + str(id) + ".txt"
         session_log = open(self.dataPath, "w", encoding="utf-8")
         session_log.write("start_" + str(self.prev_time) + "_0\n")
         session_log.close()

@@ -13,7 +13,7 @@ api = Api(app)
 
 CORS(app)
 
-init = open('.\serv_data\init.cfg')
+init = open('C:\data\serv_data\init.cfg')
 serverConfig = json.load(init)
 init.close()
 
@@ -44,7 +44,7 @@ class Annotate(Resource):
         nextJSON = allSessions[serverConfig["id"]].getNextAnnotation()
         if nextJSON == None:
             serverConfig["id"] = serverConfig["id"] + 1
-            init = open('.\serv_data\init.cfg', "w")
+            init = open('C:\data\serv_data\init.cfg', "w")
             json.dump(serverConfig, init)
             init.close()
             return jsonify({"LeftText": "", "RightText": "", "InputMethod": "selector"})
