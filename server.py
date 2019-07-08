@@ -61,14 +61,18 @@ class ExtendSession(Resource):
 
 class ExtendUser(Resource):
     def put(self):
-        params = request.get_json()
+        identity = request.get_json()["ID"]
+        db_io.extend_user(identity)
+        return
+
+        """ params = request.get_json()
         identity = params["ID"]
         group = params["Group"]
         offset = params["Offset"]
         blocks = params["Blocks"]
 
         db_io.extend_user_with_params(identity, group, offset, blocks)
-        return
+        return """
 
 class GenerateUser(Resource):
     def put(self):
@@ -92,7 +96,8 @@ class Annotate(Resource):
         params = request.get_json()
         identity = params["ID"]
         content = params["Content"]
-        db_io.annotate(identity, content)
+        position = params["Position"]
+        db_io.annotate(identity, content, position)
         return
 
 #api.add_resource(NewSession, '/session')
