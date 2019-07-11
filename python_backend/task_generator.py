@@ -86,15 +86,16 @@ def id_block_to_text_block(block):
         kw_json = json.load(file)
 
         new_block = list()
+        mode_list = list()
 
         for line in block:
             new_line = list()
             for item in line[:-1]:
                 new_line.append(kw_json[item])
-            new_line.append(line[-1])
+            mode_list.append(line[-1])
             new_block.append(new_line)
 
-        return new_block
+        return new_block, mode_list
 
 def get_meta():
     with open(SOURCE_META_FILEPATH, mode="r", encoding="utf-8") as file:

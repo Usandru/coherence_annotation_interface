@@ -1,11 +1,29 @@
 <div class="container">
-  <button type="button" class="btn" (click)="isCollapsed = !isCollapsed"
-    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">options
-  </button>
-  <div id="collapseBasic" [collapse]="isCollapsed">
-    <button type="button" class="btn" (click)="State = 'selector'">
-      restart session
-    </button>
+  <div class="row">
+    <div class="col">
+      
+      <button type="button" class="btn" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">hjælp
+      </button>
+
+      <div id="collapseBasic" [collapse]="isCollapsed">
+        <button type="button" class="btn" (click)="State = 'selector'">
+          gå tilbage til start
+        </button>
+
+        <button type="button" class="btn" (click)="State = 'guide'">
+          se vejledning
+        </button>
+
+        <button type="button" class="btn" (click)="State = 'contact'">
+          kontakt
+        </button>
+      </div>
+
+    </div>
+    <div class="col">
+      <div *ngIf="annotation_position > -1" class="float-right">Annotation <b>{{annotation_position}}</b> af <b>{{annotation_length}}</b></div>
+    </div>
   </div>
 </div>
 
@@ -34,8 +52,8 @@
 </div>
 
 <div class="col-md-4 offset-md-4">
-  <app-slider *ngIf="State === 'slider'" (confirm)="annotate($event)"></app-slider>
-  <app-binary *ngIf="State === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
-  <app-scale *ngIf="State === 'scale'" (confirm)="annotate($event)"></app-scale>
-  <app-selector *ngIf="State === 'selector'" (startSession)="newSession($event)"></app-selector>
+  <app-slider *ngIf="mode === 'slider'" (confirm)="annotate($event)"></app-slider>
+  <app-binary *ngIf="mode === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
+  <app-scale *ngIf="mode === 'scale'" (confirm)="annotate($event)"></app-scale>
+  <app-selector *ngIf="mode === 'selector'" (startSession)="newSession($event)"></app-selector>
 </div>

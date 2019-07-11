@@ -48,8 +48,9 @@ class Annotate(Resource):
         else:
             return jsonify(nextJSON) """
 
+#This is bad REST_api design but it was easier than understanding how to use html parameters in Angulars httpCLient.get()
 class FetchSession(Resource):
-    def get(self):
+    def put(self):
         identity = request.get_json()["ID"]
         return db_io.fetch_user(identity)
 
