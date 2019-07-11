@@ -57,6 +57,12 @@ export class AppComponent implements OnInit {
     })
   }
 
+  newUser(name) {
+    this.httpClient.put(this.flask_serv_path + 'generateuserdefault', {'ID': name}).subscribe(nothing => {
+      
+    })
+  }
+
   newSession(evt) {
     console.log(evt)
     this.httpClient.put(this.flask_serv_path + 'session', {'session': evt}).subscribe(nothing =>{
