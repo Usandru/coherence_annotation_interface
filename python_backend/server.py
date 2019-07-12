@@ -58,7 +58,7 @@ class ExtendSession(Resource):
     def put(self):
         identity = request.get_json()["ID"]
         db_io.extend_user(identity)
-        return db_io.fetch_user(identity)
+        return
 
 class ExtendUser(Resource):
     def put(self):
@@ -90,7 +90,7 @@ class GenerateUserDefault(Resource):
     def put(self):
         identity = request.get_json()["ID"]
         db_io.generate_user_default(identity)
-        return db_io.fetch_user(identity)
+        return
 
 class Annotate(Resource):
     def put(self):
