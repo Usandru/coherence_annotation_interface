@@ -52,9 +52,8 @@
 </div>
 
 <div class="col-md-4 offset-md-4">
-  <app-initial *ngIf="mode === 'initial'" (new)="newUser($event)" (existing)="existingUser($event)"></app-initial>
-  <app-slider *ngIf="mode === 'slider'" (confirm)="annotate($event)"></app-slider>
-  <app-binary *ngIf="mode === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
-  <app-scale *ngIf="mode === 'scale'" (confirm)="annotate($event)"></app-scale>
-  <app-selector *ngIf="mode === 'selector'" (startSession)="newSession($event)"></app-selector>
+  <app-initial *ngIf="mode === INITIAL_MODE" (getUser)="getUser($event)"></app-initial>
+  <app-slider *ngIf="mode === SLIDER_MODE" (confirm)="annotate($event)"></app-slider>
+  <app-binary *ngIf="mode === BINARY_MODE" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
+  <app-selector *ngIf="mode === SELECTOR_MODE" (startSession)="newSession($event)"></app-selector>
 </div>

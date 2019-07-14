@@ -14,7 +14,7 @@ export class InitialComponent implements OnInit {
 
   @Output() getUser: EventEmitter<any> = new EventEmitter();
     newUser() {
-        this.getUser.emit("new");
+      this.getUser.emit("new");
     }
     existingUser() {
       this.getUser.emit("existing");

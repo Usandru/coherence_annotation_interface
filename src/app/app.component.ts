@@ -8,6 +8,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  INITIAL_MODE = "initial";
+  SELECTOR_MODE = "selector"
+  BINARY_MODE = "binary"
+  SLIDER_MODE = "slider"
+
+
   title = 'experiment';
   isCollapsed = true;
 
@@ -18,6 +24,7 @@ export class AppComponent implements OnInit {
   text1:String = '';
   text2:String = '';
   mode:String = 'initial';
+  getUserMode:String;
   
   // Variables representing the session retrieved from the server
   ExperimentState:JSON;
@@ -57,6 +64,16 @@ export class AppComponent implements OnInit {
       this.text2 = this.annotation_content[this.annotation_position][1];
       this.mode = this.annotation_mode[this.annotation_position];
     }
+  }
+
+  pick_mode(stirng) {
+    
+  }
+
+  getUser(evt) {
+    this.getUserMode = evt;
+    this.mode = this.SELECTOR_MODE;
+
   }
 
   annotate(evt) {
