@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   // Variables relating to the current state of the client
   text1:String = '';
   text2:String = '';
-  mode:String = 'selector';
+  mode:String = 'initial';
   
   // Variables representing the session retrieved from the server
   ExperimentState:JSON;

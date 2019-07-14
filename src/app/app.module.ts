@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InitialComponent } from './initial/initial.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BinaryComponent,
     ScaleComponent,
     SelectorComponent,
+    InitialComponent,
   ],
   imports: [
     BrowserModule,

@@ -52,6 +52,7 @@
 </div>
 
 <div class="col-md-4 offset-md-4">
+  <app-initial *ngIf="mode === 'initial'" (new)="newUser($event)" (existing)="existingUser($event)"></app-initial>
   <app-slider *ngIf="mode === 'slider'" (confirm)="annotate($event)"></app-slider>
   <app-binary *ngIf="mode === 'binary'" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
   <app-scale *ngIf="mode === 'scale'" (confirm)="annotate($event)"></app-scale>
