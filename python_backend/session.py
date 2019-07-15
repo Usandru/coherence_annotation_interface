@@ -1,4 +1,4 @@
-import random
+""" import random
 import time
 from Document_Preprocessing import utils
 
@@ -115,7 +115,7 @@ class Session:
                             log_content + "_" + 
                             str(curr_time) + "_" + str(curr_time - self.prev_time) + "\n")
         session_log.close()
-        self.prev_time = curr_time
+        self.prev_time = curr_time """
 
 """     def retrieveAnnotationData(self, path):
         data_file = open(path, encoding="utf-8")

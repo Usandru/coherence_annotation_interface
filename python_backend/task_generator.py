@@ -102,5 +102,5 @@ def get_meta():
         return json.load(file)
 
 def update_meta(meta):
-    with open(SOURCE_META_FILEPATH, mode="r", encoding="utf-8") as file:
-        return json.dump(meta, file)
+    with open(SOURCE_META_FILEPATH, mode="w", encoding="utf-8") as file:
+        json.dump(meta, file)
