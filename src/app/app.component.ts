@@ -55,6 +55,7 @@ export class AppComponent implements OnInit {
     })
   }
 
+  // utility function to handle iteration of the annotation session
   updatePosition() {
     if (this.annotation_position > this.annotation_length) {
       //error handling
@@ -62,18 +63,46 @@ export class AppComponent implements OnInit {
     else {
       this.text1 = this.annotation_content[this.annotation_position][0];
       this.text2 = this.annotation_content[this.annotation_position][1];
-      this.mode = this.annotation_mode[this.annotation_position];
+      this.pickMode(this.annotation_mode[this.annotation_position]);
     }
   }
 
-  pick_mode(stirng) {
-    
+  // utility function that exists to ensure that the mode-strings are kept uniform when they are provided by the backend
+  pickMode(string) {
+    switch(string) {
+      case "slider":
+        this.mode = this.SLIDER_MODE;
+        break;
+      case "binary":
+        this.mode = this.BINARY_MODE;
+        break;
+      case "selector":
+        this.mode = this.SELECTOR_MODE;
+        break;
+      case "initial":
+        this.mode = this.INITIAL_MODE;
+    }
   }
 
+  // function called through initial.component, it sets a mode (either "new" or "existing") and switches the input mode to "selector"
   getUser(evt) {
     this.getUserMode = evt;
     this.mode = this.SELECTOR_MODE;
+  }
 
+  // utility function that switches to a different mode specified in the argument passed on by the specific component
+  goBack(evt) {
+    this.pickMode(evt);
+  }
+
+  newSession(evt) {
+    switch(this.getUserMode) {
+      case "new":
+        this.newUser(evt);
+        break;
+      case "existing":
+        this.fetchSession(evt);
+    }
   }
 
   annotate(evt) {

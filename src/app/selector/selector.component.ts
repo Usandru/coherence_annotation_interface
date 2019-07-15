@@ -26,5 +26,9 @@ export class SelectorComponent implements OnInit {
         this.startSession.emit(this.args); //this.selectSet.name + "_" + 
     }
 
+  @Output() goBack: EventEmitter<any> = new EventEmitter();
+    onBack() {
+      this.goBack.emit("initial");
+    }
   
 }
