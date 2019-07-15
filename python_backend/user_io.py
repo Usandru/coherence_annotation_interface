@@ -19,7 +19,7 @@ def get_user(name):
     content_list = list()
     with open(USER_DATA_FILEPATH + name + '.txt', mode='r', encoding='utf-8') as file:
         for line in file:
-            content_list.append(line.split(","))
+            content_list.append(line.rstrip().split(","))
         return content_list
 
 def get_meta(name):

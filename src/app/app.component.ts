@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  INITIAL_MODE = "initial";
-  SELECTOR_MODE = "selector"
-  BINARY_MODE = "binary"
-  SLIDER_MODE = "slider"
+  INITIAL_MODE = 'initial';
+  SELECTOR_MODE = 'selector';
+  BINARY_MODE = 'binary';
+  SLIDER_MODE = 'slider';
 
 
   title = 'experiment';
@@ -63,24 +63,35 @@ export class AppComponent implements OnInit {
     else {
       this.text1 = this.annotation_content[this.annotation_position][0];
       this.text2 = this.annotation_content[this.annotation_position][1];
+      console.log(this.annotation_mode[this.annotation_position]);
       this.pickMode(this.annotation_mode[this.annotation_position]);
     }
   }
 
   // utility function that exists to ensure that the mode-strings are kept uniform when they are provided by the backend
-  pickMode(string) {
-    switch(string) {
-      case "slider":
+  pickMode(mode_string) {
+    console.log(mode_string);
+    
+    switch(mode_string) {
+      case mode_string === 'slider':
+        console.log("1")
         this.mode = this.SLIDER_MODE;
         break;
       case "binary":
+        console.log("2")
         this.mode = this.BINARY_MODE;
         break;
       case "selector":
+        console.log("3")
         this.mode = this.SELECTOR_MODE;
         break;
       case "initial":
+        console.log("4")
         this.mode = this.INITIAL_MODE;
+        break;
+      default:
+        console.log("5")
+
     }
   }
 
