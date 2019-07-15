@@ -3,7 +3,7 @@ import csv
 
 ORIGINALS = './originals/'
 CONFIG = ORIGINALS + 'config.json'
-META = './meta.txt'
+META = './meta.json'
 ID_TO_TEXT_JSON = "./id_to_text.json"
 
 def get_csv(filename):
@@ -41,3 +41,6 @@ for i in range(config['Number_of_Texts']):
 with open(ID_TO_TEXT_JSON, mode='w', encoding='utf-8') as file:
     json.dump(id_tag_to_text_dict, file)
 
+with open(META, mode='w', encoding='utf-8') as file:
+    meta_json = {"Blocks" : config['Number_of_Texts'] // 3, "Current_block" : 0, "Current_group" : 0}
+    json.dump(meta_json, file)

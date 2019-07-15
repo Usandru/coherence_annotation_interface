@@ -3,7 +3,7 @@ import json
 
 SOURCE_DATA_FILEPATH = "C:\\annotation_source_data\\"
 SOURCE_DATA_KW_JSON = SOURCE_DATA_FILEPATH + "id_to_text.json"
-SOURCE_META_FILEPATH = SOURCE_DATA_FILEPATH + "meta.txt"
+SOURCE_META_FILEPATH = SOURCE_DATA_FILEPATH + "meta.json"
 
 def generate_block(block_index, group):
     block_list = list()
