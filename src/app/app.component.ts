@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchSession(name) {
-    this.httpClient.put(this.flask_serv_path + 'fetchsession', {'Identity': name}).subscribe(userSession => {
+    this.httpClient.put(this.flask_serv_path + 'fetchsession', {'ID': name}).subscribe(userSession => {
       this.ExperimentState = userSession as JSON;
       this.annotation_content = this.ExperimentState["Content"];
       this.annotation_mode = this.ExperimentState["Mode"];

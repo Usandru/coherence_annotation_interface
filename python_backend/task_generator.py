@@ -25,7 +25,7 @@ def generate_block(block_index, group):
         else:
             mode = "binary"
 
-        with open(SOURCE_DATA_FILEPATH + i + ".txt", mode="r", encoding="utf-8") as file:
+        with open(SOURCE_DATA_FILEPATH + str(i) + ".txt", mode="r", encoding="utf-8") as file:
             text_ids = file.readlines()
 
             chunk = [
