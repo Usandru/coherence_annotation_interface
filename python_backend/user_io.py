@@ -33,9 +33,10 @@ def get_annotations(name):
 def extend_user(name, content):
     with open(USER_DATA_FILEPATH + name + '.txt', mode='a', encoding='utf-8') as file:
         for line in content:
+            temp = list()
             for item in line:
-                item.rstrip("\n")
-            file.write(",".join(line) + "\n")
+                temp.append(item.rstrip())
+            file.write(",".join(temp) + "\n")
 
 def add_annotation(name, content):
     with open(USER_ANNOTATION_FILEPATH + name + '.txt', mode='a', encoding='utf-8') as file:
