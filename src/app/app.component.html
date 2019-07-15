@@ -56,4 +56,5 @@
   <app-slider *ngIf="mode === SLIDER_MODE" (confirm)="annotate($event)"></app-slider>
   <app-binary *ngIf="mode === BINARY_MODE" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
   <app-selector *ngIf="mode === SELECTOR_MODE" (startSession)="newSession($event)" (goBack)="goBack($event)"></app-selector>
+  <app-session-break *ngIf="mode === BREAK_MODE" (extendSession)="extendSession()" (goBack)="goBack($event)"></app-session-break>
 </div>

@@ -7,11 +7,8 @@ def fetch_user(name):
     user_annotations = user_io.get_annotations(name)
     total_length = len(user_content)
     position = len(user_annotations)
-    if total_length <= position:
-        pass # SOME ERROR
-    else:
-        user_texts, mode_list = task_generator.id_block_to_text_block(user_content)
-        return jsonify({"Content" : user_texts, "Mode" : mode_list, "Position" : position, "Length" : total_length})
+    user_texts, mode_list = task_generator.id_block_to_text_block(user_content)
+    return jsonify({"Content" : user_texts, "Mode" : mode_list, "Position" : position, "Length" : total_length})
 
 ## THIS IS BUGGED IF THE NUMBER OF AVAILABLE BLOCKS IS INCREASED FOR ANY USERS WITHOUT OFFSET 0!
 def extend_user(name):

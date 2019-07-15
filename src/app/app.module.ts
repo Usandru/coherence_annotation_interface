@@ -15,6 +15,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InitialComponent } from './initial/initial.component';
+import { SessionBreakComponent } from './session-break/session-break.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InitialComponent } from './initial/initial.component';
     ScaleComponent,
     SelectorComponent,
     InitialComponent,
+    SessionBreakComponent,
   ],
   imports: [
     BrowserModule,

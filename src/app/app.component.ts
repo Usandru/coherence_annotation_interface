@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   SELECTOR_MODE = 'selector';
   BINARY_MODE = 'binary';
   SLIDER_MODE = 'slider';
+  BREAK_MODE = 'break';
 
 
   title = 'experiment';
@@ -51,46 +52,53 @@ export class AppComponent implements OnInit {
 
       this.user_name = name;
 
-      this.updatePosition();
+      if(this.annotation_position === this.annotation_length) {
+        this.mode = this.BREAK_MODE;
+      }
+      else {
+        this.updatePosition();
+      }
     })
   }
 
-  // utility function to handle iteration of the annotation session
-  updatePosition() {
-    if (this.annotation_position > this.annotation_length) {
-      //error handling
+  // utility function to handle the position state incrementing
+  iteratePosition() {
+    if(this.annotation_position >= this.annotation_length - 1) {
+      this.annotation_position = this.annotation_length;
+      this.text1 = ""
+      this.text2 = ""
+      this.mode = this.BREAK_MODE;
     }
     else {
-      this.text1 = this.annotation_content[this.annotation_position][0];
-      this.text2 = this.annotation_content[this.annotation_position][1];
-      console.log(this.annotation_mode[this.annotation_position]);
-      this.pickMode(this.annotation_mode[this.annotation_position]);
+      this.annotation_position = this.annotation_position + 1;
+      this.updatePosition();
     }
+  }
+
+  // utility function to handle setting the state of the annotation session to the current position
+  updatePosition() {
+    this.text1 = this.annotation_content[this.annotation_position][0];
+    this.text2 = this.annotation_content[this.annotation_position][1];
+    this.pickMode(this.annotation_mode[this.annotation_position]);
   }
 
   // utility function that exists to ensure that the mode-strings are kept uniform when they are provided by the backend
   pickMode(mode_string) {
-    console.log(mode_string);
-    
     switch(mode_string) {
-      case mode_string === 'slider':
-        console.log("1")
+      case 'slider':
         this.mode = this.SLIDER_MODE;
         break;
       case "binary":
-        console.log("2")
         this.mode = this.BINARY_MODE;
         break;
       case "selector":
-        console.log("3")
         this.mode = this.SELECTOR_MODE;
         break;
       case "initial":
-        console.log("4")
         this.mode = this.INITIAL_MODE;
         break;
       default:
-        console.log("5")
+        console.log("switch mode error")
 
     }
   }
@@ -118,8 +126,7 @@ export class AppComponent implements OnInit {
 
   annotate(evt) {
     this.httpClient.put(this.flask_serv_path + 'annotate', {'ID': this.user_name, 'Content': evt, 'Position': this.annotation_position}).subscribe(nothing => {
-      this.annotation_position = this.annotation_position + 1;
-      this.updatePosition();
+      this.iteratePosition();
     })
   }
 
