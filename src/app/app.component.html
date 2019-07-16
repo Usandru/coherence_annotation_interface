@@ -2,22 +2,15 @@
   <div class="row">
     <div class="col">
       
+      <button class="btn" (click)="coreGuideModal.show()">Vejledning</button>
+
       <button type="button" class="btn" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">hjælp
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Hjælp
       </button>
 
       <div id="collapseBasic" [collapse]="isCollapsed">
-        <button type="button" class="btn" (click)="State = 'selector'">
-          gå tilbage til start
-        </button>
-
-        <button type="button" class="btn" (click)="State = 'guide'">
-          se vejledning
-        </button>
-
-        <button type="button" class="btn" (click)="State = 'contact'">
-          kontakt
-        </button>
+        <button type="button" class="btn" (click)="mode = INITIAL_MODE">gå tilbage til start</button>
+        <button type="button" class="btn" (click)="contactModal.show()">kontakt</button>
       </div>
 
     </div>
@@ -57,4 +50,90 @@
   <app-binary *ngIf="mode === BINARY_MODE" (left)="annotate($event)" (right)="annotate($event)"></app-binary>
   <app-selector *ngIf="mode === SELECTOR_MODE" (startSession)="newSession($event)" (goBack)="goBack($event)"></app-selector>
   <app-session-break *ngIf="mode === BREAK_MODE" (extendSession)="extendSession()" (goBack)="goBack($event)"></app-session-break>
+</div>
+
+
+ 
+<div bsModal #coreGuideModal="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Vejledning og opgavebeskrivelse</h4>
+        <button type="button" class="close pull-right" (click)="coreGuideModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Om undersøgelsen</h5>
+        Undersøgelsen handler om "sammenhæng". Det er et sprogligt begreb der beskriver når tale eller tekst i sin helhed "giver mening" eller "kan tolkes".
+        Et klart eksempel på noget usammenhængende er f.eks. "han hun skab hund", som både er ugrammatisk og ikke har nogen tydelig mening. 
+        Et andet eksempel er "Han faldt i søvn og tog skoene af", som er en fin sætning, men er usammenhængende i tid da man jo ikke kan tage skoene af mens man sover.
+        Modsætningen "Han tog skoene af og faldt i søvn" giver derimod fin mening. Med andre ord er sætningen <i>mere</i> sammenhængende end den forgående.<br>
+        <br>
+        Undersøgelsen handler om disse sammenligninger af forskellige tekster, og om man kan bedømme hvilken af to tekster der er <b>mest</b> sammenhængende.
+        Det betyder at måske er de næsten lige gode, eller næsten lige dårlige, eller der er tydelig forskel, men unanset hvad så skal man prøve at lytte til ens intuition
+        og vælge den mest sammenhængende tekst.<br>
+        <br>
+        <h6>Om teksterne</h6>
+        Alle teksterne kommer fra Folketingets mødereferater, og er mellem 40 og 60 ord lange. De er ikke fra samme møde og det er forskellige mennesker der har sagt det er står
+        i teksterne. Det kan derfor være svært at regne ud hvad der bliver snakket om, og siden de er politiske tekster kan man være uenig i indholdet, men det vigtige er at
+        huske at man godt kan synes noget er forkert uden at synes det er svært at forstå.<br>
+        <br>
+        Der er ikke nogen "korrekt" vurdering af sammenhæng, og det er ikke vigtigt om man kan regne ud hvad teksten handler om - man skal bare give den vurdering der føles rigtig
+        når man sammenligner de to konkrete tekster man har foran sig.<br>
+        <br>
+        Blandt teksterne er der også par der er næsten ens. Det er ikke en fejl, der er små forskelle som gør dem forskellige. De skal bedømmes helt som de andre tekster.
+        Hvis man finder to <i>helt</i> ens tekster, så er der sket en fejl og så må man rigtig gerne sende besked om fejlen.<br>
+        <br>
+        <h6>Om sammenligningerne</h6>
+        Sammenligningerne er delt op i grupper af 33. Hvis alle 33 sammenligninger ikke bliver bedømt kan dataen risikere at blive ignoreret, så hvis man starter vil jeg være
+        rigtig taknemmelig hvis man fortsætter til enden. Det umiddelbare mål er 4 grupper af 33, så hvis man orker det er man meget velkommen til at fortsætte indtil man når 122.<br>
+        <br>        
+        Ved tests har det taget mellem 15 og 30 minutter at lave 33 sammenligninger. Hvis man bruger meget lang tid på dem, så er man måske meget tænksom end nødvendigt. Der er
+        ikke noget krav om at kunne begrunde hvorfor man syntes den ene tekst var mere sammenhængende end den anden, hvis man har en intuition eller en fornæmmelse så er det fint.
+        Alle er dog velkomne til at sende kommentare eller tanker ind hvis man syntes der var noget man lagde mærke til.<br>
+        <br>
+        <h5>Brugsguide</h5>
+        <h6>Kom i gang</h6>
+        Hvis man ikke har oprettet eller er blevet givet et brugernavn, så vælger man "Jeg har ikke et brugernavn" og skriver et brugernavn ind i boksen og trykker på "Bekræft".
+        Hvis nogen allerede har brugt det brugernavn så bliver man bedt om at vælge et andet, ellers så er man straks i gang.<br>
+        <br>
+        Hvis man enten tidligere har lavet en bruger og tog en pause, eller hvis man er blevet givet en bruger fordi man har meldt sig som særlig frivillig skal man vælge
+        "Jeg har allerede et brugernavn" og så indtaste det i boksen og trykke på "Bekræft".<br>
+        <br>
+        <h6>Sammenligninger</h6>
+        Der er to type af sammenligninger. Den ene skal man vælge mellem to knapper, "Venstre" eller "Højre", alt efter om man synes den venstre tekst eller den højre tekst
+        er <b>mest</b> sammenhængende.<br>
+        <br>
+        Den anden type skal man trække på en slider hen mod den tekst man synes er mest sammenhængende. Ideen er at man trækker længere mod enderne jo større forskellen
+        i sammenhæng føles. Hvis to tekster føles stortset ens, så trækker man en lille bitte smule mod den som føles mest alligevel. Hvis der er kæmpe forskel, så træk helt ud
+        i enden.<br>
+        <br>
+        <h5>Hjælp</h5>
+        Denne vejledning kan findes frem igen ved at trykke på "Vejledning" i toppen af siden. Knappen ved siden af der hedder "Hjælp" giver adgang til at gå tilbage til start,
+        og til kontaktoplysningerne for Andreas, hvis man har brug for at melde en fejl eller bede om hjælp.
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="coreGuideModal.hide()">Luk</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #contactModal="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Kontaktoplysninger</h4>
+        <button type="button" class="close pull-right" (click)="contactModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Andreas Rugård Klæsøe<br>
+        Email: nmh341@alumni.ku.dk<br>
+        Telefon: 21856971<br>
+      </div>
+    </div>
+  </div>
 </div>

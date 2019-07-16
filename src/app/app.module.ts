@@ -16,6 +16,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InitialComponent } from './initial/initial.component';
 import { SessionBreakComponent } from './session-break/session-break.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SessionBreakComponent } from './session-break/session-break.component';
     AlertModule.forRoot(),
     FormsModule,
     CollapseModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

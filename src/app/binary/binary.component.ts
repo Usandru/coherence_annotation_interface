@@ -9,16 +9,38 @@ export class BinaryComponent implements OnInit {
 
   constructor() { }
 
+  args:string = "";
+
   ngOnInit() {
   }
 
   @Output() left: EventEmitter<any> = new EventEmitter();
     onLeftClick() {
-        this.left.emit('binary_left');
+      let now = new Date();
+      let milisecs = now.getTime().toString();
+      let comment:string;
+      if (this.args === "") {
+        comment = this.args;
+      }
+      else {
+        comment = "///" + this.args
+      }
+      this.right.emit('binary_left' + "_" + milisecs + comment);
+      this.args = "";
     }
 
     @Output() right: EventEmitter<any> = new EventEmitter();
     onRightClick() {
-        this.right.emit('binary_right');
+      let now = new Date();
+      let milisecs = now.getTime().toString();
+      let comment:string;
+      if (this.args === "") {
+        comment = this.args;
+      }
+      else {
+        comment = "///" + this.args;
+      }
+      this.right.emit('binary_right' + "_" + milisecs + comment);
+      this.args = "";
     }
 }

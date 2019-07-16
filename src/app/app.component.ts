@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 //import { ApiService } from './services/api.service';
 import { HttpClient } from '@angular/common/http';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   BINARY_MODE = 'binary';
   SLIDER_MODE = 'slider';
   BREAK_MODE = 'break';
-
+//  @ViewChild('coreGuideModal', { static: false }) coreGuideModal: ModalDirective;
+  @ViewChild('coreGuideModal') coreGuideModal: ModalDirective;
 
   title = 'experiment';
   isCollapsed = true;
@@ -40,6 +42,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    this.coreGuideModal.show();
   }
 
   fetchSession(name) {

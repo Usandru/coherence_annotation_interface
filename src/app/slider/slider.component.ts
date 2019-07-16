@@ -8,6 +8,7 @@ import { Options, ChangeContext, PointerType } from 'ng5-slider';
 })
 export class SliderComponent implements OnInit {
   
+  args:string = "";
   value: number = 0;
   options: Options = {
     floor: -100,
@@ -60,8 +61,18 @@ export class SliderComponent implements OnInit {
 
   @Output() confirm: EventEmitter<any> = new EventEmitter();
   onConfirm() {
-    this.confirm.emit('slider_' + (this.value));
-    this.value = 0
+    let now = new Date();
+    let milisecs = now.getTime().toString();
+    let comment:string;
+      if (this.args === "") {
+        comment = this.args;
+      }
+      else {
+        comment = "///" + this.args;
+      }
+    this.confirm.emit('slider_' + (this.value) + '_' + milisecs + comment);
+    this.value = 0;
+    this.args = "";
   }
 
 }
