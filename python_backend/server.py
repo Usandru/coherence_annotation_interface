@@ -79,9 +79,9 @@ class GenerateUser(Resource):
     def put(self):
         params = request.get_json()
         identity = params["ID"]
-        group = params["Group"]
-        offset = params["Offset"]
-        blocks = params["Blocks"]
+        group = int(params["Group"])
+        offset = int(params["Offset"])
+        blocks = int(params["Blocks"])
 
         db_io.generate_user(identity, group, offset, blocks)
         return
