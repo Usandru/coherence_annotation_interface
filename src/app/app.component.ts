@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   title = 'experiment';
   isCollapsed = true;
+  admin_mode = false;
 
   // Client-side constants
   flask_serv_path:String = 'http://52.31.82.25:80/';
@@ -123,7 +124,12 @@ export class AppComponent implements OnInit {
   newSession(evt) {
     switch(this.getUserMode) {
       case "new":
-        this.newUser(evt);
+        if (this.admin_mode) {
+          this.newUserParams(evt);
+        }
+        else {
+          this.newUser(evt);
+        }
         break;
       case "existing":
         this.fetchSession(evt);
