@@ -1,4 +1,5 @@
 import json
+import constants
 
 class annotator:
     def __init__(self):
@@ -18,11 +19,13 @@ class annotator:
         self.right_id = list()
         self.left_id = list()
 
+        self.coherence_direction = list()
+
         self.number_of_annotations = -1
         self.is_partial = True
-        self.number_of_rights = -1
-        self.number_of_lefts = -1
-        self.slider_zeros = -1
+        self.number_of_rights = 0
+        self.number_of_lefts = 0
+        self.slider_zeros = 0
 
 
     def from_raw(self, id, task_filepath, meta_filepath, annotation_filepath):
@@ -57,14 +60,24 @@ class annotator:
             self.left_id.append(self.tasks[i][0])
             self.right_id.append(self.tasks[i][1])
 
-        right_count = len([item for item in self.content if item[1] == "right"])
-        positive_count = len([item for item in self.content if item[1] == "right"])
-        self.number_of_lefts = len([item for item in self.annotations if item[1] == "left"])
+        for i in range(self.number_of_annotations):
+            if self.mode[i] == constants.BINARY:
+                if self.content[i] == constants.LEFT:
+                    self.number_of_lefts += 1
+                    self.coherence_direction.append(constants.LEFT)
+                else:
+                    self.number_of_rights += 1
+                    self.coherence_direction.append(constants.RIGHT)
+                
+            elif self.mode[i] == constants.SLIDER:
+                if float(self.content[i]) < 0:
+                    self.number_of_lefts += 1
+                    self.coherence_direction.append(constants.LEFT)
+                elif float(self.content[i]) > 0:
+                    self.number_of_rights += 1
+                    self.coherence_direction.append(constants.RIGHT)
+                else:
+                    self.slider_zeros += 1
+                    self.coherence_direction.append(constants.NULL)
+
         
-        self.number_of_rights
-        
-        self.slider_zeros = len([item for item in self.annotations if item[1] == "0"])
-
-
-
-    
