@@ -1,6 +1,7 @@
 import json
 import constants
 import networkx as nx
+import matplotlib.pyplot as plt
 
 class annotator:
     def __init__(self):
@@ -83,4 +84,31 @@ class annotator:
                     self.slider_zeros += 1
                     self.coherence_direction.append(constants.NULL)
 
+        self.build_graph()
+
+    def build_graph(self):
+        self.graph.add_nodes_from(self.right_id)
+        self.graph.add_nodes_from(self.left_id)
         
+        for i in range(self.number_of_annotations):
+            if self.coherence_direction[i] == constants.RIGHT:
+                self.graph.add_edge(self.right_id[i], self.left_id[i]) # "mode"=self.mode[i], "id"=self.id
+            elif self.coherence_direction[i] == constants.LEFT:
+                self.graph.add_edge(self.left_id[i], self.right_id[i])
+
+        remove_list = list()
+        for node in self.graph.nodes:
+            if self.graph.degree(node) == 0:
+                remove_list.append(node)
+        
+        for node in remove_list:
+            self.graph.remove_node(node)
+
+        cycles = nx.simple_cycles(self.graph)
+
+        print(list(cycles))
+
+        plt.subplot(111)
+        nx.draw(self.graph, pos=nx.circular_layout(self.graph))
+        plt.savefig(constants.OUTPUT + str(self.id) + ".png")
+        plt.clf()
