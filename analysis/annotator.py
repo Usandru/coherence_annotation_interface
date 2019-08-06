@@ -1,5 +1,6 @@
 import json
 import constants
+import networkx as nx
 
 class annotator:
     def __init__(self):
@@ -26,6 +27,8 @@ class annotator:
         self.number_of_rights = 0
         self.number_of_lefts = 0
         self.slider_zeros = 0
+
+        self.graph = nx.DiGraph()
 
 
     def from_raw(self, id, task_filepath, meta_filepath, annotation_filepath):
