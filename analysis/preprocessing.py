@@ -71,4 +71,10 @@ def basic_numbers(annotator_list):
     print("Pairs with six annotations, and number of total agreements: " + str(sixes) + " " + str(six_ag))
     print("Overall total agreement count: " + str(total_agreement))
 
+def stats(annotator_list):
+    for annotator_object in annotator_list:
+        ## get binom test for all left-right choices put together - per annotator looks fairly reasonable
+        annotator_object.run_statistics()
+
 basic_numbers(annotators)
+stats(annotators)

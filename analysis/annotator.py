@@ -1,6 +1,8 @@
 import json
 import constants
 import networkx as nx
+import statsmodels.stats as sm_st
+from statsmodels.stats.proportion import binom_test
 import matplotlib.pyplot as plt
 
 class annotator:
@@ -30,6 +32,7 @@ class annotator:
         self.slider_zeros = 0
 
         self.graph = nx.DiGraph()
+        self.null_graph = nx.Graph()
 
 
     def from_raw(self, id, task_filepath, meta_filepath, annotation_filepath):
@@ -86,15 +89,23 @@ class annotator:
 
         self.build_graph()
 
+    def run_statistics(self):
+        print(binom_test(self.number_of_lefts, self.number_of_annotations - self.slider_zeros))
+
     def build_graph(self):
         self.graph.add_nodes_from(self.right_id)
         self.graph.add_nodes_from(self.left_id)
+
         
         for i in range(self.number_of_annotations):
             if self.coherence_direction[i] == constants.RIGHT:
                 self.graph.add_edge(self.right_id[i], self.left_id[i]) # "mode"=self.mode[i], "id"=self.id
             elif self.coherence_direction[i] == constants.LEFT:
                 self.graph.add_edge(self.left_id[i], self.right_id[i])
+            elif self.coherence_direction[i] == constants.NULL:
+                self.null_graph.add_node(self.left_id[i])
+                self.null_graph.add_node(self.right_id[i])
+                self.null_graph.add_edge(self.left_id[i], self.right_id[i])
 
         remove_list = list()
         for node in self.graph.nodes:
@@ -104,10 +115,7 @@ class annotator:
         for node in remove_list:
             self.graph.remove_node(node)
 
-        cycles = nx.simple_cycles(self.graph)
-
-        print(list(cycles))
-
+    def draw_graph(self):
         plt.subplot(111)
         nx.draw(self.graph, pos=nx.circular_layout(self.graph))
         plt.savefig(constants.OUTPUT + str(self.id) + ".png")
