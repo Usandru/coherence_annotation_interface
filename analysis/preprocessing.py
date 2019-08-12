@@ -75,6 +75,7 @@ def stats(annotator_list):
     for annotator_object in annotator_list:
         ## get binom test for all left-right choices put together - per annotator looks fairly reasonable
         annotator_object.run_statistics()
+        annotator_object.draw_all()
 
 basic_numbers(annotators)
 stats(annotators)
