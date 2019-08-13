@@ -1,7 +1,7 @@
 import constants
 import annotator
 import composite
-
+import utilities
 
 
 #Read in all the data
@@ -79,3 +79,4 @@ def stats(annotator_list):
 
 basic_numbers(annotators)
 stats(annotators)
+print(utilities.minimal_pair_summary(annotators))
