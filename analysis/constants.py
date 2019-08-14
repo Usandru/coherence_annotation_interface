@@ -12,6 +12,7 @@ BINARY = "binary"
 LEFT = "left"
 RIGHT = "right"
 NULL = "null"
+MODE = "mode"
 
 #NUMBER CONSTANTS
 NUMBER_OF_FILES = 15

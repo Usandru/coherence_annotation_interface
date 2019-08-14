@@ -2,6 +2,7 @@ import constants
 import annotator
 import composite
 import utilities
+import networkx as nx
 
 
 #Read in all the data
@@ -77,6 +78,8 @@ def stats(annotator_list):
         annotator_object.run_statistics()
         annotator_object.draw_all()
 
-basic_numbers(annotators)
-stats(annotators)
-print(utilities.minimal_pair_summary(annotators))
+#basic_numbers(annotators)
+#stats(annotators)
+#print(utilities.minimal_pair_summary(annotators))
+
+print(annotators[0].get_graph_by_mode(0, constants.SLIDER).nodes())

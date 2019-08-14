@@ -122,13 +122,21 @@ class annotator:
             current_graph.add_nodes_from(self.left_id[(i * constants.BLOCK_SIZE):((i+1) * constants.BLOCK_SIZE)])
             for j in range(i * constants.BLOCK_SIZE, (i+1) * constants.BLOCK_SIZE):
                 if self.coherence_direction[i] == constants.RIGHT:
-                    current_graph.add_edge(self.right_id[j], self.left_id[j]) # "mode"=self.mode[i], "id"=self.id
+                    current_graph.add_edge(self.right_id[j], self.left_id[j], mode = self.mode[i]) # "mode"=self.mode[i], "id"=self.id
                 elif self.coherence_direction[i] == constants.LEFT:
-                    current_graph.add_edge(self.left_id[j], self.right_id[j])
+                    current_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[i])
                 elif self.coherence_direction[i] == constants.NULL:
                     self.null_graph.add_node(self.left_id[j])
                     self.null_graph.add_node(self.right_id[j])
-                    self.null_graph.add_edge(self.left_id[j], self.right_id[j])
+                    self.null_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[i])
+
+    def get_graph_by_mode(self, block, mode):
+        curr_graph = self.graphs[block]
+        edges = nx.edges(curr_graph)
+        edge_modes = nx.get_edge_attributes(curr_graph, constants.MODE)
+        filtered_edges = [edge for edge in edges if edge_modes[edge] == mode]
+        sub_graph_view = nx.edge_subgraph(self.graphs[block], filtered_edges)
+        return sub_graph_view.copy()
 
     def draw_graph(self, ident):
         plt.subplot(111)
