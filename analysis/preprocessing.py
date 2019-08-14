@@ -82,4 +82,7 @@ def stats(annotator_list):
 #stats(annotators)
 #print(utilities.minimal_pair_summary(annotators))
 
-print(annotators[0].get_graph_by_mode(0, constants.SLIDER).nodes())
+temp_int = 0
+temp_block = 0
+print(annotators[temp_int].get_graph_by_mode(temp_block, constants.SLIDER).nodes())
+print(annotators[temp_int].get_graph_by_mode(temp_block, constants.BINARY).nodes())

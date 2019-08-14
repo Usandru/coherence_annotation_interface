@@ -1,10 +1,10 @@
 #PATH CONSTANTS
-SOURCE = "./annotation_source_data/"
-ORIGINALS = SOURCE + "originals/"
-DATA = "./annotation_user_data/"
-DATA_META = DATA + "meta/"
-DATA_ANNOTATIONS = DATA + "annotations/"
-OUTPUT = "./output/"
+SOURCE = "./annotation_source_data/" #the location of the text files used to generate the tasks
+ORIGINALS = SOURCE + "originals/" #the location of the original text files
+DATA = "./annotation_user_data/" #the location of the tasks generated for each user
+DATA_META = DATA + "meta/" #the location of the meta-data associated with each user
+DATA_ANNOTATIONS = DATA + "annotations/" #the location of the annotations given by each user
+OUTPUT = "./output/" #location of analysis output
 
 #STRING CONSTANTS
 SLIDER = "slider"
@@ -13,6 +13,9 @@ LEFT = "left"
 RIGHT = "right"
 NULL = "null"
 MODE = "mode"
+WEIGHT = "weight"
+WEIGHT_SUM = "weight_sum"
+WEIGHT_INSTANCES = "weight_instances"
 
 #NUMBER CONSTANTS
 NUMBER_OF_FILES = 15

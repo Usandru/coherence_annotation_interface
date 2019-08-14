@@ -120,15 +120,18 @@ class annotator:
             current_graph = self.graphs[(i + self.offset) % constants.NUM_OF_BLOCKS]
             current_graph.add_nodes_from(self.right_id[(i * constants.BLOCK_SIZE):((i+1) * constants.BLOCK_SIZE)])
             current_graph.add_nodes_from(self.left_id[(i * constants.BLOCK_SIZE):((i+1) * constants.BLOCK_SIZE)])
-            for j in range(i * constants.BLOCK_SIZE, (i+1) * constants.BLOCK_SIZE):
+            for j in range(i * constants.BLOCK_SIZE, min((i+1) * constants.BLOCK_SIZE, self.number_of_annotations)):
                 if self.coherence_direction[i] == constants.RIGHT:
-                    current_graph.add_edge(self.right_id[j], self.left_id[j], mode = self.mode[i]) # "mode"=self.mode[i], "id"=self.id
+                    current_graph.add_edge(self.right_id[j], self.left_id[j], mode = self.mode[j])
+                    current_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
                 elif self.coherence_direction[i] == constants.LEFT:
-                    current_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[i])
+                    current_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
+                    current_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
                 elif self.coherence_direction[i] == constants.NULL:
                     self.null_graph.add_node(self.left_id[j])
                     self.null_graph.add_node(self.right_id[j])
-                    self.null_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[i])
+                    self.null_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
+                    self.null_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
 
     def get_graph_by_mode(self, block, mode):
         curr_graph = self.graphs[block]
