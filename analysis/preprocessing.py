@@ -1,22 +1,26 @@
 import constants
 import annotator
 import composite
+import sourcetexts
 import utilities
+import string
 import networkx as nx
-
+from collections import Counter
 
 #Read in all the data
-annotators = list()
-for i in range(constants.NUMBER_OF_FILES):
+def generate_annotators():
+    annotators = list()
+    for i in range(constants.NUMBER_OF_FILES):
 
-    tasks = constants.DATA + str(i) + ".txt"
-    meta = constants.DATA_META + str(i) + ".txt"
-    annotations = constants.DATA_ANNOTATIONS + str(i) + ".txt"
-    #use "annotator" class
-    new_annotator = annotator.annotator()
-    new_annotator.from_raw(i, tasks, meta, annotations)
+        tasks = constants.DATA + str(i) + ".txt"
+        meta = constants.DATA_META + str(i) + ".txt"
+        annotations = constants.DATA_ANNOTATIONS + str(i) + ".txt"
+        #use "annotator" class
+        new_annotator = annotator.annotator()
+        new_annotator.from_raw(i, tasks, meta, annotations)
 
-    annotators.append(new_annotator)
+        annotators.append(new_annotator)
+    return annotators
     
 def basic_numbers(annotator_list):
     new_composite = composite.composite(annotator_list)
@@ -78,11 +82,37 @@ def stats(annotator_list):
         annotator_object.run_statistics()
         annotator_object.draw_all()
 
+def get_types_from_texts(list_of_texts):
+    joined_text = " ".join(list_of_texts)
+    casefolded_text = joined_text.casefold()
+    punctuation_table = str.maketrans(dict.fromkeys(string.punctuation))
+    punctuation_stripped_text = casefolded_text.translate(punctuation_table)
+    types = Counter(punctuation_stripped_text.split())
+    return types.most_common()
+
+def init_output_files():
+    for output_path in constants.OUTPUT_PATHS:
+        with open(output_path, mode='w', encoding='utf-8') as file_init:
+            file_init.write("")
+
+init_output_files()
+
+#annotator_list = generate_annotators()
 #basic_numbers(annotators)
 #stats(annotators)
 #print(utilities.minimal_pair_summary(annotators))
 
 temp_int = 0
 temp_block = 0
-print(annotators[temp_int].get_graph_by_mode(temp_block, constants.SLIDER).nodes())
-print(annotators[temp_int].get_graph_by_mode(temp_block, constants.BINARY).nodes())
+#print(annotators[temp_int].get_graph_by_mode(temp_block, constants.SLIDER).nodes())
+#print(annotators[temp_int].get_graph_by_mode(temp_block, constants.BINARY).nodes())
+
+source_text_object = sourcetexts.sourcetexts(constants.ORIGINALS, constants.ORIGINALS_CONFIG)
+
+source_text_list = source_text_object.get_all_texts()
+
+all_types = get_types_from_texts(source_text_list)
+print(len(all_types))
+
+with open(constants.TEXT_TYPES_OUTPUT, mode='a', encoding='utf-8') as output_file:
+    output_file.writelines("\n".join([str(item) for item in all_types]))
