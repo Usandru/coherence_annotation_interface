@@ -62,12 +62,12 @@ EXPECTED_MINIMAL_PAIR_OUTCOMES = [("3237 ORIGINAL", "3237 PRONOUN-NP-P", LEFT), 
                                   ("120 ORIGINAL", "120 PRONOUN-P-P", LEFT), #der -> hun (+verb agreement), the difference is ambiguous but RIGHT implies some unnamed actor
                                   ("131 ORIGINAL", "131 PRONOUN-P-NP", NULL), #vi -> ordføreren, probably no agreement, simply different sentence meanings
                                   ("3116 ORIGINAL", "3116 PRONOUN-NP-P", LEFT), #enhedslistens ordfører -> dem, large gap between pronoun and antecedent, likely less coherent
-                                  ("1926 ORIGINAL", "1926 PRONOUN-NP-P", ),
-                                  ("", "", ),
-                                  ("", "", ),
-                                  ("", "", ),
-                                  ("", "", ),
-                                  ("", "", ),
-                                  ("", "", ),
+                                  ("1926 ORIGINAL", "1926 PRONOUN-NP-P", LEFT), #kommunerne og regionerne -> vi, the pronoun does not match the natural antecedents, and brings the speaker into the equation with no warning
+                                  ("1380 ORIGINAL", "1380 PRONOUN-NP-NP", LEFT), #kommunerne -> regionerne, the following sentences refers to "kommunerne" but the difference is hard to tell
+                                  ("1184 ORIGINAL", "1184 PRONOUN-NP-ADJ", LEFT), #et glimrende initiativ -> glimrende, the adjective version is awkward compared to the NP version
+                                  ("2473 ORIGINAL", "2473 PRONOUN-P-NP", LEFT), #de -> kommunerne, overly explicit, the pronoun's antecedent is immediately prior so changing to the correct NP doesn't help
+                                  ("1627 ORIGINAL", "1627 PRONOUN-NP-NP", NULL), #ordføreren -> Kommunerne, who is speaking becomes ambiguous, there is a slight tend to the first but it might be a wash
+                                  ("1249 ORIGINAL", "1249 PRONOUN-NP-NP", LEFT), #kommuner -> lande, while plausible the second NP is only loosely related and seems unlikely
+                                  ("2638 ORIGINAL", "2638 PRONOUN-O-NP", ), #
                                   ("", "", ),
                                   ("", "", )]
