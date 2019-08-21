@@ -68,6 +68,15 @@ EXPECTED_MINIMAL_PAIR_OUTCOMES = [("3237 ORIGINAL", "3237 PRONOUN-NP-P", LEFT), 
                                   ("2473 ORIGINAL", "2473 PRONOUN-P-NP", LEFT), #de -> kommunerne, overly explicit, the pronoun's antecedent is immediately prior so changing to the correct NP doesn't help
                                   ("1627 ORIGINAL", "1627 PRONOUN-NP-NP", NULL), #ordføreren -> Kommunerne, who is speaking becomes ambiguous, there is a slight tend to the first but it might be a wash
                                   ("1249 ORIGINAL", "1249 PRONOUN-NP-NP", LEFT), #kommuner -> lande, while plausible the second NP is only loosely related and seems unlikely
-                                  ("2638 ORIGINAL", "2638 PRONOUN-O-NP", ), #
-                                  ("", "", ),
-                                  ("", "", )]
+                                  ("2638 ORIGINAL", "2638 PRONOUN-O-NP", RIGHT), #Ø -> af muligheder, makes it more explicit meaning the altered version should be most plausible
+                                  ("600 ORIGINAL", "600 PRONOUN-NP-O", RIGHT), #som administrativ enhed -> Ø, the NP makes the topic more specific, but without being linked to the rest the removal simplifies without notable loss
+                                  ("663 ORIGINAL", "663 PRONOUN-O-NP", RIGHT), #Ø -> for regeringen, the addition contextualizes the events, but perhaps quite weakly - moreso than the above however
+                                  ("3173 ORIGINAL", "3173 PRONOUN-NP-O", LEFT), #om skærpelse -> Ø, the removal obscures the topic
+                                  ("713 ORIGINAL", "713 PRONOUN-P-P", NULL), #vores -> deres, extremely difficult to spot difference, the meaning changes but not the coherence
+                                  ("789 ORIGINAL", "789 PRONOUN-NP-P", LEFT), #lovforslaget -> det, pronoun with no clear antecedent, disruptive
+                                  ("863 ORIGINAL", "863 PRONOUN-P-P", NULL), #vi -> de, hard to spot pronoun difference, which slightly favours the original but not to any great degree
+                                  ("779 ORIGINAL", "779 PRONOUN-NP-P", LEFT), #tilsynets -> deres, pronoun with no antecedent, loss of coherence
+                                  ("1977 ORIGINAL", "1977 PRONOUN-P-NP", RIGHT), #det her -> lovforslaget, ambiguous pronoun made explicit
+                                  ("2635 ORIGINAL", "2635 PRONOUN-P-P", LEFT), #hun -> de, hard to spot pronoun difference that clearly favours the original given the context
+                                  ("2133 ORIGINAL", "2133 PRONOUN-P-NP", NULL), #vi -> borgerne, neither make much if any sense due to the inherent lack of context
+                                  ("874 ORIGINAL", "874 PRONOUN-NP-NP", RIGHT)] #spørgeren -> ministeren, arguably no difference, but due to the overall context of the textset, the altered should feel more natural
