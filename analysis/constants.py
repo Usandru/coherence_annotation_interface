@@ -19,6 +19,7 @@ MODE = "mode"
 WEIGHT = "weight"
 WEIGHT_SUM = "weight_sum"
 WEIGHT_INSTANCES = "weight_instances"
+BINARY_INSTANCES = "binary_instances"
 NUMBER_OF_SOURCE_TEXTS = "Number_of_Texts"
 
 TEXT = "text"

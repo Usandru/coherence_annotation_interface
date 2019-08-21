@@ -37,6 +37,15 @@ def minimal_pair_summary(list_of_annotators):
 
     return "\n".join(summary_string)
 
+def normalize_slider(graph):
+    #create copy of graph
+
+    weights = nx.get_edge_attributes(graph, constants.WEIGHT)
+    weights.values
+    print(weights)
+    ## get the max absolute value of the weights, divide all weights by the max
+    #return the copied graph
+
 def merge_slider(graphs):
     out_graph = nx.DiGraph()
 
@@ -61,11 +70,34 @@ def merge_binary(graphs):
         for edge in graph.edges:
             out_graph.add_edges_from([edge])
             if constants.WEIGHT_SUM in out_graph[edge[0], edge[1]]:
-                out_graph[edge[0], edge[1]][constants.WEIGHT_INSTANCES] = 1
+                out_graph[edge[0], edge[1]][constants.BINARY_INSTANCES] = 1
             else:
-                out_graph[edge[0], edge[1]][constants.WEIGHT_INSTANCES] += 1
+                out_graph[edge[0], edge[1]][constants.BINARY_INSTANCES] += 1
 
     return out_graph
+
+def merge_both(graphs):
+    #ignore slider weights and merge purely by agreement? Essentially "merge binary" again.
+
+
+def cycles_in_graph(graph):
+    #use the cycle detector
+    #return the nodes involved in the cycle
+    pass
+
+def remove_cycles(graph):
+    #get the cycles
+    #remove the edges involved
+    #return the copied graph with the removed edges
+    pass
+
+def save_graph_to_file(graph):
+    #save the graph into a file-type good for whatever graph visualization I pick
+
+##how do I highlight cycles?
+
+#graph sort
+
 
 ##TODO resolve merged graph cases of single-pair cycles - pure agreement, weighted agreement, normalized weighted agreement
 ##add merging for binary and slider graphs into full aggregate graphs

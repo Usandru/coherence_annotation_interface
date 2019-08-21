@@ -117,17 +117,18 @@ class annotator:
 
     def build_graph(self):
         for i in range(self.blocks):
-            current_graph = self.graphs[(i + self.offset) % constants.NUM_OF_BLOCKS]
-            current_graph.add_nodes_from(self.right_id[(i * constants.BLOCK_SIZE):((i+1) * constants.BLOCK_SIZE)])
-            current_graph.add_nodes_from(self.left_id[(i * constants.BLOCK_SIZE):((i+1) * constants.BLOCK_SIZE)])
-            for j in range(i * constants.BLOCK_SIZE, min((i+1) * constants.BLOCK_SIZE, self.number_of_annotations)):
-                if self.coherence_direction[i] == constants.RIGHT:
+            graph_index = (i + self.offset) % constants.NUM_OF_BLOCKS
+            current_graph = self.graphs[graph_index]
+            current_graph.add_nodes_from(self.right_id[(graph_index * constants.BLOCK_SIZE):((graph_index+1) * constants.BLOCK_SIZE)])
+            current_graph.add_nodes_from(self.left_id[(graph_index * constants.BLOCK_SIZE):((graph_index+1) * constants.BLOCK_SIZE)])
+            for j in range(graph_index * constants.BLOCK_SIZE, min((graph_index+1) * constants.BLOCK_SIZE, self.number_of_annotations)):
+                if self.coherence_direction[j] == constants.RIGHT:
                     current_graph.add_edge(self.right_id[j], self.left_id[j], mode = self.mode[j])
                     current_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
-                elif self.coherence_direction[i] == constants.LEFT:
+                elif self.coherence_direction[j] == constants.LEFT:
                     current_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
-                    current_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
-                elif self.coherence_direction[i] == constants.NULL:
+                    current_graph.edges[self.left_id[j], self.right_id[j]][constants.WEIGHT] = self.content[j]
+                elif self.coherence_direction[j] == constants.NULL:
                     self.null_graph.add_node(self.left_id[j])
                     self.null_graph.add_node(self.right_id[j])
                     self.null_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
@@ -150,6 +151,11 @@ class annotator:
     def draw_all(self):
         for i in range(self.blocks):
             self.draw_graph((i + self.offset) % constants.NUM_OF_BLOCKS)
+
+    def get_time_sessions(self):
+        #get the timestamps and split them by very long ones - generate a list of timestamps that are relatively close to each other
+        #run statistics on each list of timestamps - slowest, fastests, average time, pair IDs for slowest and fastest,
+        #overall distribution of time taken. 
 
 ## TODO implement handling for slider vs. binary mode, including graphs of only slider edges or only binary edges
 ## fix up the graphics of the graph displays

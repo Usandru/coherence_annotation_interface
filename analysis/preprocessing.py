@@ -95,9 +95,9 @@ def init_output_files():
         with open(output_path, mode='w', encoding='utf-8') as file_init:
             file_init.write("")
 
-init_output_files()
+#init_output_files()
 
-#annotator_list = generate_annotators()
+annotator_list = generate_annotators()
 #basic_numbers(annotators)
 #stats(annotators)
 #print(utilities.minimal_pair_summary(annotators))
@@ -107,12 +107,14 @@ temp_block = 0
 #print(annotators[temp_int].get_graph_by_mode(temp_block, constants.SLIDER).nodes())
 #print(annotators[temp_int].get_graph_by_mode(temp_block, constants.BINARY).nodes())
 
-source_text_object = sourcetexts.sourcetexts(constants.ORIGINALS, constants.ORIGINALS_CONFIG)
+#source_text_object = sourcetexts.sourcetexts(constants.ORIGINALS, constants.ORIGINALS_CONFIG)
 
-source_text_list = source_text_object.get_all_texts()
+#source_text_list = source_text_object.get_all_texts()
 
-all_types = get_types_from_texts(source_text_list)
-print(len(all_types))
+#all_types = get_types_from_texts(source_text_list)
+#print(len(all_types))
 
-with open(constants.TEXT_TYPES_OUTPUT, mode='a', encoding='utf-8') as output_file:
-    output_file.writelines("\n".join([str(item) for item in all_types]))
+#with open(constants.TEXT_TYPES_OUTPUT, mode='a', encoding='utf-8') as output_file:
+#    output_file.writelines("\n".join([str(item) for item in all_types]))
+
+utilities.normalize_slider(annotator_list[0].get_graph_by_mode(0, constants.SLIDER))
