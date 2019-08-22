@@ -152,10 +152,15 @@ class annotator:
         for i in range(self.blocks):
             self.draw_graph((i + self.offset) % constants.NUM_OF_BLOCKS)
 
+    def filter_by_mode(self, mode):
+        return [(self.left_id[i], self.right_id[i], self.coherence_direction[i], i) 
+                for i in range(self.number_of_annotations) if self.mode[i] == mode]
+
     def get_time_sessions(self):
         #get the timestamps and split them by very long ones - generate a list of timestamps that are relatively close to each other
         #run statistics on each list of timestamps - slowest, fastests, average time, pair IDs for slowest and fastest,
         #overall distribution of time taken. 
+        pass
 
 ## TODO implement handling for slider vs. binary mode, including graphs of only slider edges or only binary edges
 ## fix up the graphics of the graph displays

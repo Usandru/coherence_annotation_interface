@@ -1,6 +1,7 @@
 import constants
 import annotator
 import networkx as nx
+from collections import Counter
 #import statsmodels.stats as sm_st
 #from statsmodels.stats.proportion import binom_test
 #import matplotlib.pyplot as plt
@@ -36,6 +37,13 @@ def minimal_pair_summary(list_of_annotators):
         summary_string.append(", ".join(single_text))
 
     return "\n".join(summary_string)
+
+def get_text_types(text):
+    casefolded_text = text.casefold()
+    punctuation_table = str.maketrans(dict.fromkeys(string.punctuation))
+    punctuation_stripped_text = casefolded_text.translate(punctuation_table)
+    types = Counter(punctuation_stripped_text.split())
+    return types.most_common()
 
 def normalize_slider(graph):
     #create copy of graph

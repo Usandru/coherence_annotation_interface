@@ -16,6 +16,7 @@
 import constants
 import json
 import csv
+import utilities
 
 def get_csv(filename):
     csv_data = list()
@@ -67,8 +68,34 @@ class sourcetexts:
         else:
             return constants.NULL
 
+    def compare_number_of_types(self, pair):
+        #needs a lemmatizer
+        left_types = utilities.get_text_types(self.text_id_dict[pair[0]][constants.TEXT])
+        right_types = utilities.get_text_types(self.text_id_dict[pair[1]][constants.TEXT])
+        
+        if len(left_types) > len(right_types):
+            return constants.LEFT
+        elif len(left_types) < len(right_types):
+            return constants.RIGHT
+        else:
+            return constants.NULL
+
+    def compare_punctuation(self, pair):
+        left_count = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
+        right_count = self.text_id_dict[pair[1]][constants.TEXT]
+
+        if left_count > right_count:
+            return constants.LEFT
+        elif left_count < right_count:
+            return constants.RIGHT
+        else:
+            return constants.NULL
+
     def get_all_texts(self):
         text_list = list()
         for key in self.text_id_dict.keys():
             text_list.append(self.text_id_dict[key][constants.TEXT])
         return text_list
+
+#generate output files of normal text statistics - distribution and frequency and so on
+#
