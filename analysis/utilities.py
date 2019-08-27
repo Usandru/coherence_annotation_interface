@@ -1,10 +1,48 @@
 import constants
 import annotator
 import networkx as nx
+import string
 from collections import Counter
 #import statsmodels.stats as sm_st
 #from statsmodels.stats.proportion import binom_test
 #import matplotlib.pyplot as plt
+
+def reverse_direction(direction):
+    if direction == constants.LEFT:
+        return constants.RIGHT
+    elif direction == constants.RIGHT:
+        return constants.LEFT
+    else:
+        return constants.NULL
+
+def same_num_id(left_id, right_id):
+    l_num = left_id.split()[0]
+    r_num = right_id.split()[0]
+    if l_num == r_num:
+        return True
+    else:
+        return False
+
+def tag_is_original(text_id):
+    _, tag = text_id.split()
+    if tag == constants.TAG_ORIGINAL:
+        return True
+    else:
+        return False
+
+def compare_ids(left_id, right_id):
+    l_num, l_tag = left_id.split()
+    r_num, r_tag = right_id.split()
+
+    if l_num == r_num:
+        if l_tag == constants.TAG_ORIGINAL:
+            return constants.LEFT
+        else:
+            return constants.RIGHT
+    elif int(l_num) < int(r_num):
+        return constants.LEFT
+    else:
+        return constants.RIGHT
 
 def minimal_pair_agreement(list_of_annotators):
     m_p_dict = dict()
@@ -86,6 +124,7 @@ def merge_binary(graphs):
 
 def merge_both(graphs):
     #ignore slider weights and merge purely by agreement? Essentially "merge binary" again.
+    pass
 
 
 def cycles_in_graph(graph):
@@ -101,6 +140,7 @@ def remove_cycles(graph):
 
 def save_graph_to_file(graph):
     #save the graph into a file-type good for whatever graph visualization I pick
+    pass
 
 ##how do I highlight cycles?
 

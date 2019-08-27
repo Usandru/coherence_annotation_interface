@@ -12,6 +12,7 @@ TEXT_TYPES_OUTPUT = OUTPUT + "text_types.txt"
 #STRING CONSTANTS
 SLIDER = "slider"
 BINARY = "binary"
+MERGED = "merged"
 LEFT = "left"
 RIGHT = "right"
 NULL = "null"
@@ -22,15 +23,35 @@ WEIGHT_INSTANCES = "weight_instances"
 BINARY_INSTANCES = "binary_instances"
 NUMBER_OF_SOURCE_TEXTS = "Number_of_Texts"
 
+#keyvalue argument string constants
 TEXT = "text"
 WORD_COUNT = "word count"
 SENTENCES = "sentences"
+
+#EDGELITS KW ARGS STRING CONSTATNS
+AGREEMENT = "agreement"
+AGREEMENT_COMPONENTS = "agreement_components"
+LEFT_AUTHOR = "left_author"
+RIGHT_AUTHOR = "right_author"
+DIRECTION = "direction"
+SLIDER_WEIGHT = "slider_weight"
+SLIDER_DIRECTION = "slider_direction"
+EDGELIST_MODE = "edgelist_mode"
+
+#text ID tag strings
+TAG_ORIGINAL = "ORIGINAL"
 
 #NUMBER CONSTANTS
 NUMBER_OF_FILES = 15
 NUM_OF_BLOCKS = 4 #the number of blocks in total for the source dataset
 BLOCK_SIZE = 33
 
+#edgelist tuple constants
+EDGE_LEFT = 0
+EDGE_RIGHT = 1
+EDGE_KEYVALUE = 2
+
+#sourcetext CSV file constants
 CSV_TIME = 0
 CSV_NAME = 1
 CSV_TEXT = 2

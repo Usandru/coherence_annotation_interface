@@ -1,13 +1,13 @@
 import json
 import constants
-import networkx as nx
-import statsmodels.stats as sm_st
-from statsmodels.stats.proportion import binom_test
-import matplotlib.pyplot as plt
+import edgelist
+import sourcetexts
 
 class annotator:
-    def __init__(self):
+    def __init__(self, sourcetexts_object):
         self.id = ""
+
+        self.sourcetexts_object = sourcetexts_object
         
         self.offset = -1
         self.blocks = -1
@@ -23,21 +23,13 @@ class annotator:
         self.right_id = list()
         self.left_id = list()
 
-        self.coherence_direction = list()
-
-        self.minimal_pairs = list()
+        self.direction = list()
 
         self.number_of_annotations = -1
         self.is_partial = True
         self.number_of_rights = 0
         self.number_of_lefts = 0
         self.slider_zeros = 0
-
-        self.graphs = list()
-        self.null_graph = nx.Graph()
-
-        for _ in range(constants.NUM_OF_BLOCKS):
-            self.graphs.append(nx.DiGraph())
         
 
 
@@ -61,107 +53,41 @@ class annotator:
         # Establish the core values for later processing
         self.number_of_annotations = len(self.annotations)
         
+        ##SET TO VALUES FROM constants LATER
         for i in range(self.number_of_annotations):
             self.mode.append(self.annotations[i][0])
             self.content.append(self.annotations[i][1])
             self.time.append(self.annotations[i][2])
 
         # Determine if the set is partial or complete
-        if self.number_of_annotations % 33 > 0:
+        if self.number_of_annotations % constants.BLOCK_SIZE > 0:
             self.is_partial = True
         else:
             self.is_partial = False
         
-        # Generate lists of comparison ids by their left-right position for later use
+        # Generate lists of comparison ids by their left-right position for later use -- SET TO VALUES FROM constants LATER
         for i in range(len(self.tasks)):
             self.left_id.append(self.tasks[i][0])
             self.right_id.append(self.tasks[i][1])
 
-        # Determine the unweighted coherence direction (or if there is a null, for slider annotations)
+        # Determine the unweighted coherence direction (or if there is a null, for slider annotations) --- the IF comparisons should probably be turned into functions later
+        # in fact it can be generalized so that MODE calls a function appropriate to that MODE which doesn't need to be added here? Not really necessary though
         for i in range(self.number_of_annotations):
             if self.mode[i] == constants.BINARY:
                 if self.content[i] == constants.LEFT:
                     self.number_of_lefts += 1
-                    self.coherence_direction.append(constants.LEFT)
+                    self.direction.append(constants.LEFT)
                 else:
                     self.number_of_rights += 1
-                    self.coherence_direction.append(constants.RIGHT)
+                    self.direction.append(constants.RIGHT)
                 
             elif self.mode[i] == constants.SLIDER:
                 if float(self.content[i]) < 0:
                     self.number_of_lefts += 1
-                    self.coherence_direction.append(constants.LEFT)
+                    self.direction.append(constants.LEFT)
                 elif float(self.content[i]) > 0:
                     self.number_of_rights += 1
-                    self.coherence_direction.append(constants.RIGHT)
+                    self.direction.append(constants.RIGHT)
                 else:
                     self.slider_zeros += 1
-                    self.coherence_direction.append(constants.NULL)
-
-        # Gather up the minimal pairs into tuples, storing them by numerical id, tag on the left,
-        # tag on the right, and direction of the coherence arrow
-        for i in range(self.number_of_annotations):
-            left_num, left_tag = self.left_id[i].split()
-            right_num, right_tag = self.right_id[i].split()
-
-            if left_num == right_num:
-                self.minimal_pairs.append((left_num, left_tag, right_tag, self.coherence_direction[i]))
-
-        # Construct the graph here - this is likely a temporary placement of this function call
-        self.build_graph()
-
-    def run_statistics(self):
-        # Generate binomial values for areas of interest - does the position of the text determine
-        # the coherence relationship? Discard nulls as noise
-        print(binom_test(self.number_of_lefts, self.number_of_annotations - self.slider_zeros))
-
-    def build_graph(self):
-        for i in range(self.blocks):
-            graph_index = (i + self.offset) % constants.NUM_OF_BLOCKS
-            current_graph = self.graphs[graph_index]
-            current_graph.add_nodes_from(self.right_id[(graph_index * constants.BLOCK_SIZE):((graph_index+1) * constants.BLOCK_SIZE)])
-            current_graph.add_nodes_from(self.left_id[(graph_index * constants.BLOCK_SIZE):((graph_index+1) * constants.BLOCK_SIZE)])
-            for j in range(graph_index * constants.BLOCK_SIZE, min((graph_index+1) * constants.BLOCK_SIZE, self.number_of_annotations)):
-                if self.coherence_direction[j] == constants.RIGHT:
-                    current_graph.add_edge(self.right_id[j], self.left_id[j], mode = self.mode[j])
-                    current_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
-                elif self.coherence_direction[j] == constants.LEFT:
-                    current_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
-                    current_graph.edges[self.left_id[j], self.right_id[j]][constants.WEIGHT] = self.content[j]
-                elif self.coherence_direction[j] == constants.NULL:
-                    self.null_graph.add_node(self.left_id[j])
-                    self.null_graph.add_node(self.right_id[j])
-                    self.null_graph.add_edge(self.left_id[j], self.right_id[j], mode = self.mode[j])
-                    self.null_graph.edges[self.right_id[j], self.left_id[j]][constants.WEIGHT] = self.content[j]
-
-    def get_graph_by_mode(self, block, mode):
-        curr_graph = self.graphs[block]
-        edges = nx.edges(curr_graph)
-        edge_modes = nx.get_edge_attributes(curr_graph, constants.MODE)
-        filtered_edges = [edge for edge in edges if edge_modes[edge] == mode]
-        sub_graph_view = nx.edge_subgraph(self.graphs[block], filtered_edges)
-        return sub_graph_view.copy()
-
-    def draw_graph(self, ident):
-        plt.subplot(111)
-        nx.draw(self.graphs[ident], pos=nx.circular_layout(self.graphs[ident]))
-        plt.savefig(constants.OUTPUT + str(self.id) + "_" + str(ident) + ".png")
-        plt.clf()
-
-    def draw_all(self):
-        for i in range(self.blocks):
-            self.draw_graph((i + self.offset) % constants.NUM_OF_BLOCKS)
-
-    def filter_by_mode(self, mode):
-        return [(self.left_id[i], self.right_id[i], self.coherence_direction[i], i) 
-                for i in range(self.number_of_annotations) if self.mode[i] == mode]
-
-    def get_time_sessions(self):
-        #get the timestamps and split them by very long ones - generate a list of timestamps that are relatively close to each other
-        #run statistics on each list of timestamps - slowest, fastests, average time, pair IDs for slowest and fastest,
-        #overall distribution of time taken. 
-        pass
-
-## TODO implement handling for slider vs. binary mode, including graphs of only slider edges or only binary edges
-## fix up the graphics of the graph displays
-## implement time analysis functions
+                    self.direction.append(constants.NULL)
