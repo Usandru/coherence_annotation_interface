@@ -33,8 +33,8 @@ class annotator:
         
 
 
-    def from_raw(self, id, task_filepath, meta_filepath, annotation_filepath):
-        self.id = id
+    def from_raw(self, identity, task_filepath, meta_filepath, annotation_filepath):
+        self.id = identity
 
         # Retrieve all the raw data from the file paths and assign it to the general containers
         with open(task_filepath, mode="r", encoding="utf-8") as file:
@@ -91,3 +91,21 @@ class annotator:
                 else:
                     self.slider_zeros += 1
                     self.direction.append(constants.NULL)
+
+    def print_summary(self):
+        labels = "id,number of annotations,number of binary, number of slider,number of lefts,number of rights,number of nulls"
+        number_of_slider = len([item for item in self.mode if item == constants.SLIDER])
+        number_of_binary = len([item for item in self.mode if item == constants.BINARY])
+        content_list = [self.id, self.number_of_annotations, number_of_binary, number_of_slider, self.number_of_lefts, self.number_of_rights, self.slider_zeros]
+        content = ",".join([str(item) for item in content_list])
+
+        return content, labels
+
+    def generate_edgelist(self):
+        base_edgelist = list()
+        source_id = self.id
+
+        for i in range(self.number_of_annotations):
+            base_edgelist.append(edgelist.raw_to_edge(self.left_id[i], self.right_id[i], self.direction[i], self.content[i], self.mode[i], self.time[i], self.id))
+
+        return edgelist.EdgeList(base_edgelist, source_id, self.sourcetexts_object)

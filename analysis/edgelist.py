@@ -36,34 +36,87 @@ def merge_check_if_same_origin(first_source_id, second_source_id):
     else:
         return False
 
+#this function has gotten enormously bloated - the issue is that there are cases where the nodes in the edgelist have been set to "ORIGINAL"
+#but this change is not reflected in the agreement components, so there are key errors. Since there cannot be any identical pairs, if any pairs
+#have the same number in the edge list, it's either a minimal pair list or an un-cast list. Otherwise it cannot be known, but also the num ID will be plenty
 def compute_agreement_and_direction(left_node, right_node, list_of_agreement_components):
-    tally = dict({left_node : 0, right_node : 0})
-    for component in list_of_agreement_components:
-        if component[COMPONENT_DIRECTION] == constants.LEFT:
-            tally[component[COMPONENT_LEFT]] += 1
-        elif component[COMPONENT_DIRECTION] == constants.RIGHT:
-            tally[component[COMPONENT_RIGHT]] += 1
-
-    if tally[left_node] > tally[right_node]:
-        return_direction = constants.LEFT
-    elif tally[left_node] > tally[right_node]:
-        return_direction = constants.RIGHT
+    l_num, l_tag = left_node.split()
+    r_num, r_tag = right_node.split()
+    num_only = True
+    if l_num == r_num:
+        tally = dict({left_node : 0, right_node : 0})
+        num_only = False
     else:
-        return_direction = constants.NULL
-    
-    return max(tally.values()) / sum(tally.values()), return_direction
+        tally = dict({l_num : 0, r_num : 0})
 
+    if num_only:
+        for component in list_of_agreement_components:
+            l_num_tmp, _ = component[COMPONENT_LEFT].split()
+            r_num_tmp, _ = component[COMPONENT_RIGHT].split()
+            if component[COMPONENT_DIRECTION] == constants.LEFT:
+                tally[l_num_tmp] += 1
+            elif component[COMPONENT_DIRECTION] == constants.RIGHT:
+                tally[r_num_tmp] += 1
+        
+        if tally[l_num] > tally[r_num]:
+            return_direction = constants.LEFT
+        elif tally[l_num] < tally[r_num]:
+            return_direction = constants.RIGHT
+        else:
+            return_direction = constants.NULL
+    else:
+        for component in list_of_agreement_components:
+            if component[COMPONENT_DIRECTION] == constants.LEFT:
+                tally[component[COMPONENT_LEFT]] += 1
+            elif component[COMPONENT_DIRECTION] == constants.RIGHT:
+                tally[component[COMPONENT_RIGHT]] += 1
+
+        if tally[left_node] > tally[right_node]:
+            return_direction = constants.LEFT
+        elif tally[left_node] < tally[right_node]:
+            return_direction = constants.RIGHT
+        else:
+            return_direction = constants.NULL
+    
+    if sum(tally.values()) == 0:
+        return 1, return_direction
+    else:
+        return max(tally.values()) / sum(tally.values()), return_direction
+
+#the same problem as above holds here too
 def compute_slider_weight_and_direction(left_node, right_node, list_of_agreement_components):
-    tally = dict({left_node : 0, right_node : 0})
+    l_num, l_tag = left_node.split()
+    r_num, r_tag = right_node.split()
+    num_only = True
+    if l_num == r_num:
+        tally = dict({left_node : 0, right_node : 0})
+        num_only = False
+    else:
+        tally = dict({l_num : 0, r_num : 0})
+
     slider_components = [component for component in list_of_agreement_components if component[COMPONENT_MODE] == constants.SLIDER]
+
     for component in slider_components:
-        if component[COMPONENT_DIRECTION] == constants.LEFT:
-            tally[component[COMPONENT_LEFT]] += abs(component[COMPONENT_CONTENT])
-        elif component[COMPONENT_DIRECTION] == constants.RIGHT:
-            tally[component[COMPONENT_RIGHT]] += abs(component[COMPONENT_CONTENT])
+        if num_only:
+            l_num_tmp, _ = component[COMPONENT_LEFT].split()
+            r_num_tmp, _ = component[COMPONENT_RIGHT].split()
+
+            if component[COMPONENT_DIRECTION] == constants.LEFT:
+                tally[l_num_tmp] += abs(float(component[COMPONENT_CONTENT]))
+            elif component[COMPONENT_DIRECTION] == constants.RIGHT:
+                tally[r_num_tmp] += abs(float(component[COMPONENT_CONTENT]))
+        else:
+            if component[COMPONENT_DIRECTION] == constants.LEFT:
+                tally[component[COMPONENT_LEFT]] += abs(float(component[COMPONENT_CONTENT]))
+            elif component[COMPONENT_DIRECTION] == constants.RIGHT:
+                tally[component[COMPONENT_RIGHT]] += abs(float(component[COMPONENT_CONTENT]))
 
     if len(slider_components) > 0:
-        average_weight = (tally[right_node] - tally[left_node]) / len(slider_components)
+        if num_only:
+            average_weight = (tally[r_num] - tally[l_num]) / len(slider_components)
+        else:
+            average_weight = (tally[right_node] - tally[left_node]) / len(slider_components)
+
         if average_weight < 0:
             return average_weight, constants.LEFT
         elif average_weight > 0:
@@ -73,12 +126,32 @@ def compute_slider_weight_and_direction(left_node, right_node, list_of_agreement
     else:
         return None, constants.NULL
 
+def merge_list_of_edgelists(list_of_edgelists):
+    out_edgelist = None
+    for edgelist in list_of_edgelists:
+        if out_edgelist == None:
+            out_edgelist = edgelist
+        else:
+            out_edgelist = out_edgelist.merge_edgelists(edgelist)
 
+    return out_edgelist
+
+def merge_edge_kw_values(left_node, right_node, first_dict, second_dict):
+    first_dict[constants.AGREEMENT_COMPONENTS].extend(second_dict[constants.AGREEMENT_COMPONENTS])
+    merged_agreement, merged_direction = compute_agreement_and_direction(left_node, right_node, first_dict[constants.AGREEMENT_COMPONENTS])
+    first_dict[constants.AGREEMENT] = merged_agreement
+    first_dict[constants.DIRECTION] = merged_direction
+    first_dict[constants.EDGELIST_MODE] = constants.MERGED
+
+    slider_weight, slider_direction = compute_slider_weight_and_direction(left_node, right_node, first_dict[constants.AGREEMENT_COMPONENTS])
+
+    first_dict[constants.SLIDER_WEIGHT] = slider_weight
+    first_dict[constants.SLIDER_DIRECTION] = slider_direction
 
 class EdgeList:
     def __init__(self, edge_list, source_id, sourcetext_object):
         self.edge_list = edge_list
-        self.source_id = source_id
+        self.source_id = str(source_id)
         self.sourcetext_object = sourcetext_object
 
     def copy_by_mode(self, mode):
@@ -100,40 +173,33 @@ class EdgeList:
         for edge in edges_to_cast:
             l_num, l_tag = edge[constants.EDGE_LEFT].split()
             r_num, r_tag = edge[constants.EDGE_RIGHT].split()
+
+            if l_num == r_num:
+                continue
             edges_to_append.append(make_edge(" ".join([l_num, constants.TAG_ORIGINAL]), " ".join([r_num, constants.TAG_ORIGINAL]), **edge[constants.EDGE_KEYVALUE]))
 
         new_source_id = self.source_id + "_casttooriginal"
-        return EdgeList(new_edge_list.extend(edges_to_append), new_source_id, self.sourcetext_object)
+        new_edge_list.extend(edges_to_append)
+        return EdgeList(new_edge_list, new_source_id, self.sourcetext_object)
 
     def merge_edgelists(self, other_edgelist):
-        new_edge_list = list()
+        new_edge_dict = dict()
         new_source_id = self.source_id + "_MERGED_" + other_edgelist.source_id
 
         for edge in self.edge_list:
-            node_l = edge[constants.EDGE_LEFT]
-            node_r = edge[constants.EDGE_RIGHT]
-            for other_edge in other_edgelist:
-                #if the nodes are the same...
-                if node_l == other_edge[constants.EDGE_LEFT]:
-                    if node_r == other_edge[constants.EDGE_RIGHT]:
-                        
-                        base_dict = copy.deepcopy(edge[constants.EDGE_KEYVALUE])
-                        extend_dict = other_edge[constants.EDGE_KEYVALUE]
+            key = (edge[constants.EDGE_LEFT], edge[constants.EDGE_RIGHT])
+            new_edge_dict[key] = copy.deepcopy(edge[constants.EDGE_KEYVALUE])
 
-                        base_dict[constants.AGREEMENT_COMPONENTS].extend(extend_dict[constants.AGREEMENT_COMPONENTS])
+        for edge in other_edgelist.edge_list:
+            key = (edge[constants.EDGE_LEFT], edge[constants.EDGE_RIGHT])
 
-                        merged_agreement, merged_direction = compute_agreement_and_direction(node_l, node_r, base_dict[constants.AGREEMENT_COMPONENTS])
-                        base_dict[constants.AGREEMENT] = merged_agreement
-                        base_dict[constants.DIRECTION] = merged_direction
-                        base_dict[constants.EDGELIST_MODE] = constants.MERGED
+            if key in new_edge_dict:
+                merge_edge_kw_values(key[0], key[1], new_edge_dict[key], edge[constants.EDGE_KEYVALUE])
+            else:
+                new_edge_dict[key] = edge[constants.EDGE_KEYVALUE]
 
-                        slider_weight, slider_direction = compute_slider_weight_and_direction(node_l, node_r, base_dict[constants.AGREEMENT_COMPONENTS])
-
-                        base_dict[constants.SLIDER_WEIGHT] = slider_weight
-                        base_dict[constants.SLIDER_DIRECTION] = slider_direction
-
-                        new_edge_list.append(make_edge(node_l, node_r, **base_dict))
-                        break
+        new_edge_list = list()
+        for key in new_edge_dict.keys():
+            new_edge_list.append(make_edge(key[0], key[1], **new_edge_dict[key]))
 
         return EdgeList(new_edge_list, new_source_id, self.sourcetext_object)
-

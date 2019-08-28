@@ -8,7 +8,7 @@ import networkx as nx
 from collections import Counter
 
 #Read in all the data
-def generate_annotators():
+def generate_annotators(sourcetext_object):
     annotators = list()
     for i in range(constants.NUMBER_OF_FILES):
 
@@ -16,7 +16,7 @@ def generate_annotators():
         meta = constants.DATA_META + str(i) + ".txt"
         annotations = constants.DATA_ANNOTATIONS + str(i) + ".txt"
         #use "annotator" class
-        new_annotator = annotator.annotator()
+        new_annotator = annotator.annotator(sourcetext_object)
         new_annotator.from_raw(i, tasks, meta, annotations)
 
         annotators.append(new_annotator)
@@ -76,12 +76,6 @@ def basic_numbers(annotator_list):
     print("Pairs with six annotations, and number of total agreements: " + str(sixes) + " " + str(six_ag))
     print("Overall total agreement count: " + str(total_agreement))
 
-def stats(annotator_list):
-    for annotator_object in annotator_list:
-        ## get binom test for all left-right choices put together - per annotator looks fairly reasonable
-        annotator_object.run_statistics()
-        annotator_object.draw_all()
-
 def get_types_from_texts(list_of_texts):
     joined_text = " ".join(list_of_texts)
     casefolded_text = joined_text.casefold()
@@ -90,31 +84,21 @@ def get_types_from_texts(list_of_texts):
     types = Counter(punctuation_stripped_text.split())
     return types.most_common()
 
-def init_output_files():
-    for output_path in constants.OUTPUT_PATHS:
-        with open(output_path, mode='w', encoding='utf-8') as file_init:
-            file_init.write("")
+def get_types(source_text_object):
+    source_text_list = source_text_object.get_all_texts()
 
-#init_output_files()
+    all_types = get_types_from_texts(source_text_list)
+    print(len(all_types))
 
-annotator_list = generate_annotators()
+    with open(constants.TEXT_TYPES_OUTPUT, mode='a', encoding='utf-8') as output_file:
+        output_file.writelines("\n".join([str(item) for item in all_types]))
+
+class generate_core_datastructures:
+    def __init__(self):
+        self.source_text_object = sourcetexts.sourcetexts(constants.ORIGINALS, constants.ORIGINALS_CONFIG)
+        self.annotator_list = generate_annotators(self.source_text_object)
+
+
+
 #basic_numbers(annotators)
-#stats(annotators)
 #print(utilities.minimal_pair_summary(annotators))
-
-temp_int = 0
-temp_block = 0
-#print(annotators[temp_int].get_graph_by_mode(temp_block, constants.SLIDER).nodes())
-#print(annotators[temp_int].get_graph_by_mode(temp_block, constants.BINARY).nodes())
-
-#source_text_object = sourcetexts.sourcetexts(constants.ORIGINALS, constants.ORIGINALS_CONFIG)
-
-#source_text_list = source_text_object.get_all_texts()
-
-#all_types = get_types_from_texts(source_text_list)
-#print(len(all_types))
-
-#with open(constants.TEXT_TYPES_OUTPUT, mode='a', encoding='utf-8') as output_file:
-#    output_file.writelines("\n".join([str(item) for item in all_types]))
-
-utilities.normalize_slider(annotator_list[0].get_graph_by_mode(0, constants.SLIDER))
