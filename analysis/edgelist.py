@@ -22,7 +22,7 @@ def raw_to_edge(left_node, right_node, direction, content, mode, time, origin_id
         second_node = right_node
     
     return make_edge(first_node, second_node, **{constants.AGREEMENT_COMPONENTS : [(left_node, right_node, direction, content, mode, time, origin_id)], 
-                                                 constants.AGREEMENT : 1.0,
+                                                 constants.AGREEMENT : 1,
                                                  constants.DIRECTION : edge_direction,
                                                  constants.EDGELIST_MODE : mode})
 
@@ -79,9 +79,9 @@ def compute_agreement_and_direction(left_node, right_node, list_of_agreement_com
             return_direction = constants.NULL
     
     if sum(tally.values()) == 0:
-        return 1, return_direction
+        return len(list_of_agreement_components), return_direction #ie. there are only nulls - which obviously all agree with one another
     else:
-        return max(tally.values()) / sum(tally.values()), return_direction
+        return max(tally.values()), return_direction
 
 #the same problem as above holds here too
 def compute_slider_weight_and_direction(left_node, right_node, list_of_agreement_components):

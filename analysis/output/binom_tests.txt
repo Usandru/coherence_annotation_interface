@@ -14,3 +14,375 @@ id,p-value
 13,0.5323087760278415
 14,0.3437499999999999
 aggregate,1.0
+
+
+WORDCOUNT BINOM TESTS, BY EDGELISTS
+id,matches,total,p-value
+0,14,33,0.4868502416647969
+1,34,66,0.9021585000966986
+3,13,33,0.29620636859908717
+4,30,66,0.5385827752459463
+5,72,132,0.33838023893982433
+6,33,66,1.0
+8,59,132,0.25776108784325424
+9,15,32,0.8600500659085804
+10,18,33,0.7283324808813629
+11,31,66,0.7122308826373509
+12,11,33,0.08014331245794892
+13,28,66,0.2678116648465871
+14,4,11,0.548828125
+0_MERGED_1_MERGED_3_MERGED_4_MERGED_5_MERGED_6_MERGED_8_MERGED_9_MERGED_10_MERGED_11_MERGED_12_MERGED_13_MERGED_14,115,240,0.5613667386935031
+id,matches,total,p-value
+0_modefilteron:slider,8,21,0.38331031799316395
+1_modefilteron:slider,17,34,1.0
+3_modefilteron:slider,5,13,0.5810546875
+4_modefilteron:slider,13,34,0.22948101302608842
+5_modefilteron:slider,33,64,0.9006532462520322
+6_modefilteron:slider,17,34,1.0
+8_modefilteron:slider,26,63,0.20736789985685428
+9_modefilteron:slider,6,11,0.9999999999999997
+10_modefilteron:slider,10,20,1.0
+11_modefilteron:slider,16,32,1.0
+12_modefilteron:slider,5,13,0.5810546875
+13_modefilteron:slider,15,34,0.60759136127308
+14_modefilteron:slider,2,5,1.0
+0_modefilteron:slider_MERGED_1_modefilteron:slider_MERGED_3_modefilteron:slider_MERGED_4_modefilteron:slider_MERGED_5_modefilteron:slider_MERGED_6_modefilteron:slider_MERGED_8_modefilteron:slider_MERGED_9_modefilteron:slider_MERGED_10_modefilteron:slider_MERGED_11_modefilteron:slider_MERGED_12_modefilteron:slider_MERGED_13_modefilteron:slider_MERGED_14_modefilteron:slider,57,133,0.11824011046976077
+id,matches,total,p-value
+0_modefilteron:binary,6,12,1.0
+1_modefilteron:binary,17,32,0.8600500659085804
+3_modefilteron:binary,8,20,0.5034446716308595
+4_modefilteron:binary,17,32,0.8600500659085804
+5_modefilteron:binary,39,68,0.2749903961710004
+6_modefilteron:binary,16,32,1.0
+8_modefilteron:binary,33,69,0.8099490529189239
+9_modefilteron:binary,9,21,0.6636238098144525
+10_modefilteron:binary,8,13,0.5810546875
+11_modefilteron:binary,15,34,0.60759136127308
+12_modefilteron:binary,6,20,0.11531829833984371
+13_modefilteron:binary,13,32,0.37708558747544885
+14_modefilteron:binary,2,6,0.6875000000000002
+0_modefilteron:binary_MERGED_1_modefilteron:binary_MERGED_3_modefilteron:binary_MERGED_4_modefilteron:binary_MERGED_5_modefilteron:binary_MERGED_6_modefilteron:binary_MERGED_8_modefilteron:binary_MERGED_9_modefilteron:binary_MERGED_10_modefilteron:binary_MERGED_11_modefilteron:binary_MERGED_12_modefilteron:binary_MERGED_13_modefilteron:binary_MERGED_14_modefilteron:binary,62,135,0.3895026289761409
+id,matches,total,p-value
+0_casttooriginal,13,27,1.0
+1_casttooriginal,31,54,0.3408909412200971
+3_casttooriginal,13,27,1.0
+4_casttooriginal,28,54,0.8919231511047496
+5_casttooriginal,69,108,0.005023518333482728
+6_casttooriginal,29,54,0.6834892282353376
+8_casttooriginal,55,108,0.9234010375945971
+9_casttooriginal,14,27,1.0
+10_casttooriginal,15,27,0.7011080384254457
+11_casttooriginal,28,54,0.8919231511047496
+12_casttooriginal,11,27,0.44206833839416504
+13_casttooriginal,29,54,0.6834892282353376
+14_casttooriginal,4,9,1.0
+0_casttooriginal_MERGED_1_casttooriginal_MERGED_3_casttooriginal_MERGED_4_casttooriginal_MERGED_5_casttooriginal_MERGED_6_casttooriginal_MERGED_8_casttooriginal_MERGED_9_casttooriginal_MERGED_10_casttooriginal_MERGED_11_casttooriginal_MERGED_12_casttooriginal_MERGED_13_casttooriginal_MERGED_14_casttooriginal,87,168,0.6997974882614133
+id,matches,total,p-value
+0_modefilteron:slider_casttooriginal,7,17,0.629058837890625
+1_modefilteron:slider_casttooriginal,15,28,0.8505540192127226
+3_modefilteron:slider_casttooriginal,5,11,0.9999999999999997
+4_modefilteron:slider_casttooriginal,11,28,0.34492845088243484
+5_modefilteron:slider_casttooriginal,31,52,0.21160856876151615
+6_modefilteron:slider_casttooriginal,16,28,0.571588188409805
+8_modefilteron:slider_casttooriginal,25,51,1.0
+9_modefilteron:slider_casttooriginal,6,9,0.5078125
+10_modefilteron:slider_casttooriginal,7,16,0.8036193847656252
+11_modefilteron:slider_casttooriginal,15,26,0.5571970939636235
+12_modefilteron:slider_casttooriginal,5,11,0.9999999999999997
+13_modefilteron:slider_casttooriginal,16,28,0.571588188409805
+14_modefilteron:slider_casttooriginal,2,4,1.0
+0_modefilteron:slider_casttooriginal_MERGED_1_modefilteron:slider_casttooriginal_MERGED_3_modefilteron:slider_casttooriginal_MERGED_4_modefilteron:slider_casttooriginal_MERGED_5_modefilteron:slider_casttooriginal_MERGED_6_modefilteron:slider_casttooriginal_MERGED_8_modefilteron:slider_casttooriginal_MERGED_9_modefilteron:slider_casttooriginal_MERGED_10_modefilteron:slider_casttooriginal_MERGED_11_modefilteron:slider_casttooriginal_MERGED_12_modefilteron:slider_casttooriginal_MERGED_13_modefilteron:slider_casttooriginal_MERGED_14_modefilteron:slider_casttooriginal,55,108,0.9234010375945971
+id,matches,total,p-value
+0_modefilteron:binary_casttooriginal,6,10,0.7539062500000002
+1_modefilteron:binary_casttooriginal,16,26,0.32693958282470703
+3_modefilteron:binary_casttooriginal,8,16,1.0
+4_modefilteron:binary_casttooriginal,17,26,0.16863754391670224
+5_modefilteron:binary_casttooriginal,38,56,0.010454818321892184
+6_modefilteron:binary_casttooriginal,13,26,1.0
+8_modefilteron:binary_casttooriginal,30,57,0.7913664277791812
+9_modefilteron:binary_casttooriginal,8,18,0.8145294189453123
+10_modefilteron:binary_casttooriginal,8,11,0.22656250000000003
+11_modefilteron:binary_casttooriginal,13,28,0.8505540192127226
+12_modefilteron:binary_casttooriginal,6,16,0.45449829101562506
+13_modefilteron:binary_casttooriginal,13,26,1.0
+14_modefilteron:binary_casttooriginal,2,5,1.0
+0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal,57,109,0.7018111820646837
+
+
+SENTENCE COUNT BINOM TESTS, BY EDGELISTS
+id,matches,total,p-value
+0,10,33,0.035082033369690194
+1,22,66,0.009210489694554581
+3,12,33,0.16275565745309006
+4,21,66,0.004272405031651671
+5,35,132,6.35840861241826e-08
+6,23,66,0.018657260354021005
+8,47,132,0.0011951063526718664
+9,10,32,0.05010245973244311
+10,13,33,0.29620636859908717
+11,22,66,0.009210489694554581
+12,11,33,0.08014331245794892
+13,26,66,0.10885696440971612
+14,5,11,0.9999999999999997
+0_MERGED_1_MERGED_3_MERGED_4_MERGED_5_MERGED_6_MERGED_8_MERGED_9_MERGED_10_MERGED_11_MERGED_12_MERGED_13_MERGED_14,83,240,2.053968777064384e-06
+id,matches,total,p-value
+0_modefilteron:slider,7,21,0.18924713134765628
+1_modefilteron:slider,15,34,0.60759136127308
+3_modefilteron:slider,8,13,0.5810546875
+4_modefilteron:slider,13,34,0.22948101302608842
+5_modefilteron:slider,13,64,1.8809621564294004e-06
+6_modefilteron:slider,10,34,0.024306510109454397
+8_modefilteron:slider,21,63,0.011141407415305076
+9_modefilteron:slider,6,11,0.9999999999999997
+10_modefilteron:slider,10,20,1.0
+11_modefilteron:slider,11,32,0.11018416518345472
+12_modefilteron:slider,1,13,0.0034179687499999996
+13_modefilteron:slider,16,34,0.8641662404406815
+14_modefilteron:slider,2,5,1.0
+0_modefilteron:slider_MERGED_1_modefilteron:slider_MERGED_3_modefilteron:slider_MERGED_4_modefilteron:slider_MERGED_5_modefilteron:slider_MERGED_6_modefilteron:slider_MERGED_8_modefilteron:slider_MERGED_9_modefilteron:slider_MERGED_10_modefilteron:slider_MERGED_11_modefilteron:slider_MERGED_12_modefilteron:slider_MERGED_13_modefilteron:slider_MERGED_14_modefilteron:slider,42,133,2.5896429596984343e-05
+id,matches,total,p-value
+0_modefilteron:binary,3,12,0.14599609375000003
+1_modefilteron:binary,7,32,0.002102401573210955
+3_modefilteron:binary,4,20,0.011817932128906248
+4_modefilteron:binary,8,32,0.0070003666914999485
+5_modefilteron:binary,22,68,0.004903382516355935
+6_modefilteron:binary,13,32,0.37708558747544885
+8_modefilteron:binary,26,69,0.053289363816513634
+9_modefilteron:binary,4,21,0.0071973800659179705
+10_modefilteron:binary,3,13,0.09228515625000003
+11_modefilteron:binary,11,34,0.05761267291381961
+12_modefilteron:binary,10,20,1.0
+13_modefilteron:binary,10,32,0.05010245973244311
+14_modefilteron:binary,3,6,1.0
+0_modefilteron:binary_MERGED_1_modefilteron:binary_MERGED_3_modefilteron:binary_MERGED_4_modefilteron:binary_MERGED_5_modefilteron:binary_MERGED_6_modefilteron:binary_MERGED_8_modefilteron:binary_MERGED_9_modefilteron:binary_MERGED_10_modefilteron:binary_MERGED_11_modefilteron:binary_MERGED_12_modefilteron:binary_MERGED_13_modefilteron:binary_MERGED_14_modefilteron:binary,43,135,2.9909603590126025e-05
+id,matches,total,p-value
+0_casttooriginal,9,27,0.12207812070846553
+1_casttooriginal,21,54,0.1336742353641054
+3_casttooriginal,12,27,0.7011080384254457
+4_casttooriginal,20,54,0.07590472948910146
+5_casttooriginal,35,108,0.0003258385611274804
+6_casttooriginal,23,54,0.3408909412200971
+8_casttooriginal,46,108,0.148576347610562
+9_casttooriginal,10,27,0.24778856337070485
+10_casttooriginal,11,27,0.44206833839416504
+11_casttooriginal,22,54,0.2203284941766112
+12_casttooriginal,11,27,0.44206833839416504
+13_casttooriginal,26,54,0.8919231511047496
+14_casttooriginal,4,9,1.0
+0_casttooriginal_MERGED_1_casttooriginal_MERGED_3_casttooriginal_MERGED_4_casttooriginal_MERGED_5_casttooriginal_MERGED_6_casttooriginal_MERGED_8_casttooriginal_MERGED_9_casttooriginal_MERGED_10_casttooriginal_MERGED_11_casttooriginal_MERGED_12_casttooriginal_MERGED_13_casttooriginal_MERGED_14_casttooriginal,64,168,0.0025179898516854387
+id,matches,total,p-value
+0_modefilteron:slider_casttooriginal,6,17,0.33230590820312506
+1_modefilteron:slider_casttooriginal,14,28,1.0
+3_modefilteron:slider_casttooriginal,8,11,0.22656250000000003
+4_modefilteron:slider_casttooriginal,12,28,0.571588188409805
+5_modefilteron:slider_casttooriginal,13,52,0.0004095414537825806
+6_modefilteron:slider_casttooriginal,10,28,0.18493334203958517
+8_modefilteron:slider_casttooriginal,20,51,0.16077960181198836
+9_modefilteron:slider_casttooriginal,6,9,0.5078125
+10_modefilteron:slider_casttooriginal,8,16,1.0
+11_modefilteron:slider_casttooriginal,11,26,0.5571970939636235
+12_modefilteron:slider_casttooriginal,1,11,0.011718750000000002
+13_modefilteron:slider_casttooriginal,16,28,0.571588188409805
+14_modefilteron:slider_casttooriginal,1,4,0.625
+0_modefilteron:slider_casttooriginal_MERGED_1_modefilteron:slider_casttooriginal_MERGED_3_modefilteron:slider_casttooriginal_MERGED_4_modefilteron:slider_casttooriginal_MERGED_5_modefilteron:slider_casttooriginal_MERGED_6_modefilteron:slider_casttooriginal_MERGED_8_modefilteron:slider_casttooriginal_MERGED_9_modefilteron:slider_casttooriginal_MERGED_10_modefilteron:slider_casttooriginal_MERGED_11_modefilteron:slider_casttooriginal_MERGED_12_modefilteron:slider_casttooriginal_MERGED_13_modefilteron:slider_casttooriginal_MERGED_14_modefilteron:slider_casttooriginal,40,108,0.009057983337532563
+id,matches,total,p-value
+0_modefilteron:binary_casttooriginal,3,10,0.3437499999999999
+1_modefilteron:binary_casttooriginal,7,26,0.02895927429199217
+3_modefilteron:binary_casttooriginal,4,16,0.076812744140625
+4_modefilteron:binary_casttooriginal,8,26,0.0755186975002289
+5_modefilteron:binary_casttooriginal,22,56,0.14089542359848076
+6_modefilteron:binary_casttooriginal,13,26,1.0
+8_modefilteron:binary_casttooriginal,26,57,0.5966417603730824
+9_modefilteron:binary_casttooriginal,4,18,0.0308837890625
+10_modefilteron:binary_casttooriginal,3,11,0.22656250000000003
+11_modefilteron:binary_casttooriginal,11,28,0.34492845088243484
+12_modefilteron:binary_casttooriginal,10,16,0.45449829101562506
+13_modefilteron:binary_casttooriginal,10,26,0.32693958282470703
+14_modefilteron:binary_casttooriginal,3,5,1.0
+0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal,41,109,0.012403637243330004
+
+
+PRONOUN AND CONJUNCTION COUNT BINOM TESTS, BY EDGELISTS
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0,14 (0.4868502416647969),17 (0.9999999999999999),19 (0.4868502416647969),33
+1,35 (0.7122308826373509),27 (0.17528579444303527),40 (0.10885696440971612),66
+3,16 (0.9999999999999999),12 (0.16275565745309006),15 (0.7283324808813629),33
+4,33 (1.0),21 (0.004272405031651671),29 (0.3890524605477926),66
+5,51 (0.011314622514903824),55 (0.06717037054890533),58 (0.1914987718734713),132
+6,24 (0.035582724452231713),31 (0.7122308826373509),30 (0.5385827752459463),66
+8,59 (0.25776108784325424),63 (0.663585360338362),64 (0.7941225170088057),132
+9,12 (0.2153271497227251),13 (0.37708558747544885),10 (0.05010245973244311),32
+10,13 (0.29620636859908717),15 (0.7283324808813629),15 (0.7283324808813629),33
+11,34 (0.9021585000966986),24 (0.035582724452231713),28 (0.2678116648465871),66
+12,13 (0.29620636859908717),14 (0.4868502416647969),14 (0.4868502416647969),33
+13,27 (0.17528579444303527),24 (0.035582724452231713),31 (0.7122308826373509),66
+14,4 (0.548828125),5 (0.9999999999999997),5 (0.9999999999999997),11
+0_MERGED_1_MERGED_3_MERGED_4_MERGED_5_MERGED_6_MERGED_8_MERGED_9_MERGED_10_MERGED_11_MERGED_12_MERGED_13_MERGED_14,112 (0.332933031334952),105 (0.060988961692245394),115 (0.5613667386935031),240
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0_modefilteron:slider,8 (0.38331031799316395),13 (0.38331031799316395),13 (0.38331031799316395),21
+1_modefilteron:slider,19 (0.60759136127308),15 (0.60759136127308),22 (0.12144948495551947),34
+3_modefilteron:slider,7 (0.9999999999999999),5 (0.5810546875),7 (0.9999999999999999),13
+4_modefilteron:slider,18 (0.8641662404406815),11 (0.05761267291381961),14 (0.39152830513194264),34
+5_modefilteron:slider,21 (0.008146902228698558),25 (0.10342187831608085),25 (0.10342187831608085),64
+6_modefilteron:slider,15 (0.60759136127308),17 (1.0),17 (1.0),34
+8_modefilteron:slider,25 (0.12991792302255256),32 (0.9999999999999993),29 (0.6146550157654613),63
+9_modefilteron:slider,4 (0.548828125),3 (0.22656250000000003),1 (0.011718750000000002),11
+10_modefilteron:slider,6 (0.11531829833984371),10 (1.0),8 (0.5034446716308595),20
+11_modefilteron:slider,16 (1.0),9 (0.020061607006937265),11 (0.11018416518345472),32
+12_modefilteron:slider,7 (0.9999999999999999),5 (0.5810546875),7 (0.9999999999999999),13
+13_modefilteron:slider,16 (0.8641662404406815),12 (0.12144948495551947),17 (1.0),34
+14_modefilteron:slider,3 (1.0),2 (1.0),2 (1.0),5
+0_modefilteron:slider_MERGED_1_modefilteron:slider_MERGED_3_modefilteron:slider_MERGED_4_modefilteron:slider_MERGED_5_modefilteron:slider_MERGED_6_modefilteron:slider_MERGED_8_modefilteron:slider_MERGED_9_modefilteron:slider_MERGED_10_modefilteron:slider_MERGED_11_modefilteron:slider_MERGED_12_modefilteron:slider_MERGED_13_modefilteron:slider_MERGED_14_modefilteron:slider,56 (0.08249129252516194),49 (0.003049327385283266),56 (0.08249129252516194),133
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0_modefilteron:binary,6 (1.0),4 (0.3876953125000001),6 (1.0),12
+1_modefilteron:binary,16 (1.0),12 (0.2153271497227251),18 (0.5966148958541448),32
+3_modefilteron:binary,9 (0.8238029479980463),7 (0.2631759643554687),8 (0.5034446716308595),20
+4_modefilteron:binary,15 (0.8600500659085804),10 (0.05010245973244311),15 (0.8600500659085804),32
+5_modefilteron:binary,30 (0.3961248402970294),30 (0.3961248402970294),33 (0.9035973456835132),68
+6_modefilteron:binary,9 (0.020061607006937265),14 (0.5966148958541448),13 (0.37708558747544885),32
+8_modefilteron:binary,34 (0.9999999999999993),31 (0.4703685318581443),35 (0.9999999999999993),69
+9_modefilteron:binary,8 (0.38331031799316395),10 (1.0),9 (0.6636238098144525),21
+10_modefilteron:binary,7 (0.9999999999999999),5 (0.5810546875),7 (0.9999999999999999),13
+11_modefilteron:binary,18 (0.8641662404406815),15 (0.60759136127308),17 (1.0),34
+12_modefilteron:binary,6 (0.11531829833984371),9 (0.8238029479980463),7 (0.2631759643554687),20
+13_modefilteron:binary,11 (0.11018416518345472),12 (0.2153271497227251),14 (0.5966148958541448),32
+14_modefilteron:binary,1 (0.21875000000000003),3 (1.0),3 (1.0),6
+0_modefilteron:binary_MERGED_1_modefilteron:binary_MERGED_3_modefilteron:binary_MERGED_4_modefilteron:binary_MERGED_5_modefilteron:binary_MERGED_6_modefilteron:binary_MERGED_8_modefilteron:binary_MERGED_9_modefilteron:binary_MERGED_10_modefilteron:binary_MERGED_11_modefilteron:binary_MERGED_12_modefilteron:binary_MERGED_13_modefilteron:binary_MERGED_14_modefilteron:binary,62 (0.3895026289761409),60 (0.2281034780660131),66 (0.863415230301993),135
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0_casttooriginal,14 (1.0),16 (0.44206833839416504),17 (0.24778856337070485),27
+1_casttooriginal,32 (0.2203284941766112),25 (0.6834892282353376),35 (0.04022356409571665),54
+3_casttooriginal,13 (1.0),12 (0.7011080384254457),12 (0.7011080384254457),27
+4_casttooriginal,31 (0.3408909412200971),19 (0.04022356409571665),23 (0.3408909412200971),54
+5_casttooriginal,47 (0.21076579397878234),52 (0.7729885295985345),50 (0.5007663934164357),108
+6_casttooriginal,23 (0.3408909412200971),30 (0.49661743531793406),29 (0.6834892282353376),54
+8_casttooriginal,54 (1.0),59 (0.3865726089882607),55 (0.9234010375945971),108
+9_casttooriginal,12 (0.7011080384254457),12 (0.7011080384254457),9 (0.12207812070846553),27
+10_casttooriginal,11 (0.44206833839416504),11 (0.44206833839416504),11 (0.44206833839416504),27
+11_casttooriginal,32 (0.2203284941766112),24 (0.49661743531793406),26 (0.8919231511047496),54
+12_casttooriginal,12 (0.7011080384254457),12 (0.7011080384254457),13 (1.0),27
+13_casttooriginal,26 (0.8919231511047496),21 (0.1336742353641054),28 (0.8919231511047496),54
+14_casttooriginal,3 (0.5078125),3 (0.5078125),4 (1.0),9
+0_casttooriginal_MERGED_1_casttooriginal_MERGED_3_casttooriginal_MERGED_4_casttooriginal_MERGED_5_casttooriginal_MERGED_6_casttooriginal_MERGED_8_casttooriginal_MERGED_9_casttooriginal_MERGED_10_casttooriginal_MERGED_11_casttooriginal_MERGED_12_casttooriginal_MERGED_13_casttooriginal_MERGED_14_casttooriginal,85 (0.9385334053887981),80 (0.58928693585925),80 (0.58928693585925),168
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0_modefilteron:slider_casttooriginal,9 (0.9999999999999998),12 (0.14346313476562497),12 (0.14346313476562497),17
+1_modefilteron:slider_casttooriginal,17 (0.34492845088243484),13 (0.8505540192127226),20 (0.035698138177394874),28
+3_modefilteron:slider_casttooriginal,6 (0.9999999999999997),5 (0.9999999999999997),6 (0.9999999999999997),11
+4_modefilteron:slider_casttooriginal,16 (0.571588188409805),9 (0.08715855330228804),11 (0.34492845088243484),28
+5_modefilteron:slider_casttooriginal,20 (0.1263470758139213),24 (0.6778086391424606),22 (0.33174976336949064),52
+6_modefilteron:slider_casttooriginal,15 (0.8505540192127226),16 (0.571588188409805),17 (0.34492845088243484),28
+8_modefilteron:slider_casttooriginal,23 (0.5758493477318467),30 (0.26243753571104356),24 (0.7797679305530749),51
+9_modefilteron:slider_casttooriginal,4 (1.0),3 (0.5078125),1 (0.0390625),9
+10_modefilteron:slider_casttooriginal,4 (0.076812744140625),7 (0.8036193847656252),5 (0.21011352539062492),16
+11_modefilteron:slider_casttooriginal,14 (0.8450189828872682),9 (0.16863754391670224),9 (0.16863754391670224),26
+12_modefilteron:slider_casttooriginal,7 (0.548828125),4 (0.548828125),6 (0.9999999999999997),11
+13_modefilteron:slider_casttooriginal,16 (0.571588188409805),10 (0.18493334203958517),14 (1.0),28
+14_modefilteron:slider_casttooriginal,2 (1.0),1 (0.625),2 (1.0),4
+0_modefilteron:slider_casttooriginal_MERGED_1_modefilteron:slider_casttooriginal_MERGED_3_modefilteron:slider_casttooriginal_MERGED_4_modefilteron:slider_casttooriginal_MERGED_5_modefilteron:slider_casttooriginal_MERGED_6_modefilteron:slider_casttooriginal_MERGED_8_modefilteron:slider_casttooriginal_MERGED_9_modefilteron:slider_casttooriginal_MERGED_10_modefilteron:slider_casttooriginal_MERGED_11_modefilteron:slider_casttooriginal_MERGED_12_modefilteron:slider_casttooriginal_MERGED_13_modefilteron:slider_casttooriginal_MERGED_14_modefilteron:slider_casttooriginal,52 (0.7729885295985345),45 (0.10143273504110484),48 (0.2897982154050611),108
+id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total
+0_modefilteron:binary_casttooriginal,5 (1.0),4 (0.7539062500000002),5 (1.0),10
+1_modefilteron:binary_casttooriginal,15 (0.5571970939636235),12 (0.8450189828872682),15 (0.5571970939636235),26
+3_modefilteron:binary_casttooriginal,7 (0.8036193847656252),7 (0.8036193847656252),6 (0.45449829101562506),16
+4_modefilteron:binary_casttooriginal,15 (0.5571970939636235),10 (0.32693958282470703),12 (0.8450189828872682),26
+5_modefilteron:binary_casttooriginal,27 (0.8938530948350202),28 (1.0),28 (1.0),56
+6_modefilteron:binary_casttooriginal,8 (0.0755186975002289),14 (0.8450189828872682),12 (0.8450189828872682),26
+8_modefilteron:binary_casttooriginal,31 (0.5966417603730824),29 (0.9999999999999997),31 (0.5966417603730824),57
+9_modefilteron:binary_casttooriginal,8 (0.8145294189453123),9 (1.0),8 (0.8145294189453123),18
+10_modefilteron:binary_casttooriginal,7 (0.548828125),4 (0.548828125),6 (0.9999999999999997),11
+11_modefilteron:binary_casttooriginal,18 (0.18493334203958517),15 (0.8505540192127226),17 (0.34492845088243484),28
+12_modefilteron:binary_casttooriginal,5 (0.21011352539062492),8 (1.0),7 (0.8036193847656252),16
+13_modefilteron:binary_casttooriginal,10 (0.32693958282470703),11 (0.5571970939636235),14 (0.8450189828872682),26
+14_modefilteron:binary_casttooriginal,1 (0.375),2 (1.0),2 (1.0),5
+0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal,55 (0.9999999999999993),54 (0.9999999999999993),58 (0.5657001139736336),109
+
+
+TYPE COUNT BINOM TESTS, BY EDGELISTS
+id,matches,total,p-value
+0,15,33,0.7283324808813629
+1,23,66,0.018657260354021005
+3,12,33,0.16275565745309006
+4,28,66,0.2678116648465871
+5,56,132,0.09781221450141875
+6,34,66,0.9021585000966986
+8,64,132,0.7941225170088057
+9,14,32,0.5966148958541448
+10,15,33,0.7283324808813629
+11,27,66,0.17528579444303527
+12,12,33,0.16275565745309006
+13,17,66,0.00010147712316798859
+14,5,11,0.9999999999999997
+0_MERGED_1_MERGED_3_MERGED_4_MERGED_5_MERGED_6_MERGED_8_MERGED_9_MERGED_10_MERGED_11_MERGED_12_MERGED_13_MERGED_14,100,240,0.011664092317677795
+id,matches,total,p-value
+0_modefilteron:slider,10,21,1.0
+1_modefilteron:slider,13,34,0.22948101302608842
+3_modefilteron:slider,5,13,0.5810546875
+4_modefilteron:slider,18,34,0.8641662404406815
+5_modefilteron:slider,21,64,0.008146902228698558
+6_modefilteron:slider,17,34,1.0
+8_modefilteron:slider,29,63,0.6146550157654613
+9_modefilteron:slider,2,11,0.06542968749999997
+10_modefilteron:slider,10,20,1.0
+11_modefilteron:slider,8,32,0.0070003666914999485
+12_modefilteron:slider,6,13,0.9999999999999999
+13_modefilteron:slider,9,34,0.009041185490787033
+14_modefilteron:slider,2,5,1.0
+0_modefilteron:slider_MERGED_1_modefilteron:slider_MERGED_3_modefilteron:slider_MERGED_4_modefilteron:slider_MERGED_5_modefilteron:slider_MERGED_6_modefilteron:slider_MERGED_8_modefilteron:slider_MERGED_9_modefilteron:slider_MERGED_10_modefilteron:slider_MERGED_11_modefilteron:slider_MERGED_12_modefilteron:slider_MERGED_13_modefilteron:slider_MERGED_14_modefilteron:slider,48,133,0.0016943197076057033
+id,matches,total,p-value
+0_modefilteron:binary,5,12,0.7744140625000003
+1_modefilteron:binary,10,32,0.05010245973244311
+3_modefilteron:binary,7,20,0.2631759643554687
+4_modefilteron:binary,10,32,0.05010245973244311
+5_modefilteron:binary,35,68,0.9035973456835132
+6_modefilteron:binary,17,32,0.8600500659085804
+8_modefilteron:binary,35,69,0.9999999999999993
+9_modefilteron:binary,12,21,0.6636238098144525
+10_modefilteron:binary,5,13,0.5810546875
+11_modefilteron:binary,19,34,0.60759136127308
+12_modefilteron:binary,6,20,0.11531829833984371
+13_modefilteron:binary,8,32,0.0070003666914999485
+14_modefilteron:binary,3,6,1.0
+0_modefilteron:binary_MERGED_1_modefilteron:binary_MERGED_3_modefilteron:binary_MERGED_4_modefilteron:binary_MERGED_5_modefilteron:binary_MERGED_6_modefilteron:binary_MERGED_8_modefilteron:binary_MERGED_9_modefilteron:binary_MERGED_10_modefilteron:binary_MERGED_11_modefilteron:binary_MERGED_12_modefilteron:binary_MERGED_13_modefilteron:binary_MERGED_14_modefilteron:binary,57,135,0.08481264433974631
+id,matches,total,p-value
+0_casttooriginal,14,27,1.0
+1_casttooriginal,19,54,0.04022356409571665
+3_casttooriginal,11,27,0.44206833839416504
+4_casttooriginal,23,54,0.3408909412200971
+5_casttooriginal,44,108,0.06701041475229508
+6_casttooriginal,31,54,0.3408909412200971
+8_casttooriginal,53,108,0.9234010375945971
+9_casttooriginal,13,27,1.0
+10_casttooriginal,12,27,0.7011080384254457
+11_casttooriginal,22,54,0.2203284941766112
+12_casttooriginal,11,27,0.44206833839416504
+13_casttooriginal,13,54,0.00017512673440589474
+14_casttooriginal,4,9,1.0
+0_casttooriginal_MERGED_1_casttooriginal_MERGED_3_casttooriginal_MERGED_4_casttooriginal_MERGED_5_casttooriginal_MERGED_6_casttooriginal_MERGED_8_casttooriginal_MERGED_9_casttooriginal_MERGED_10_casttooriginal_MERGED_11_casttooriginal_MERGED_12_casttooriginal_MERGED_13_casttooriginal_MERGED_14_casttooriginal,66,168,0.0067513691632054675
+id,matches,total,p-value
+0_modefilteron:slider_casttooriginal,10,17,0.629058837890625
+1_modefilteron:slider_casttooriginal,10,28,0.18493334203958517
+3_modefilteron:slider_casttooriginal,5,11,0.9999999999999997
+4_modefilteron:slider_casttooriginal,15,28,0.8505540192127226
+5_modefilteron:slider_casttooriginal,18,52,0.03648340000835979
+6_modefilteron:slider_casttooriginal,14,28,1.0
+8_modefilteron:slider_casttooriginal,25,51,1.0
+9_modefilteron:slider_casttooriginal,2,9,0.17968750000000003
+10_modefilteron:slider_casttooriginal,8,16,1.0
+11_modefilteron:slider_casttooriginal,6,26,0.009355306625366223
+12_modefilteron:slider_casttooriginal,5,11,0.9999999999999997
+13_modefilteron:slider_casttooriginal,5,28,0.0009122341871261592
+14_modefilteron:slider_casttooriginal,2,4,1.0
+0_modefilteron:slider_casttooriginal_MERGED_1_modefilteron:slider_casttooriginal_MERGED_3_modefilteron:slider_casttooriginal_MERGED_4_modefilteron:slider_casttooriginal_MERGED_5_modefilteron:slider_casttooriginal_MERGED_6_modefilteron:slider_casttooriginal_MERGED_8_modefilteron:slider_casttooriginal_MERGED_9_modefilteron:slider_casttooriginal_MERGED_10_modefilteron:slider_casttooriginal_MERGED_11_modefilteron:slider_casttooriginal_MERGED_12_modefilteron:slider_casttooriginal_MERGED_13_modefilteron:slider_casttooriginal_MERGED_14_modefilteron:slider_casttooriginal,37,108,0.0013816410213383517
+id,matches,total,p-value
+0_modefilteron:binary_casttooriginal,4,10,0.7539062500000002
+1_modefilteron:binary_casttooriginal,9,26,0.16863754391670224
+3_modefilteron:binary_casttooriginal,6,16,0.45449829101562506
+4_modefilteron:binary_casttooriginal,8,26,0.0755186975002289
+5_modefilteron:binary_casttooriginal,26,56,0.6888797607233398
+6_modefilteron:binary_casttooriginal,17,26,0.16863754391670224
+8_modefilteron:binary_casttooriginal,28,57,0.9999999999999997
+9_modefilteron:binary_casttooriginal,11,18,0.48068237304687483
+10_modefilteron:binary_casttooriginal,4,11,0.548828125
+11_modefilteron:binary_casttooriginal,16,28,0.571588188409805
+12_modefilteron:binary_casttooriginal,6,16,0.45449829101562506
+13_modefilteron:binary_casttooriginal,8,26,0.0755186975002289
+14_modefilteron:binary_casttooriginal,2,5,1.0
+0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal,49,109,0.33818541219666115

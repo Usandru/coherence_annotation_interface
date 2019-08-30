@@ -3,6 +3,7 @@ import utilities
 import networkx
 import statsmodels
 from statsmodels.stats.proportion import binom_test
+from scipy.stats import chisquare
 import annotator
 import constants
 import edgelist
@@ -15,6 +16,8 @@ def init_output_files():
 def output_content(path, content):
     with open(path, mode='a', encoding='utf-8') as output_file:
         output_file.write(content)
+
+init_output_files()
 
 source_and_annotators = preprocessing.generate_core_datastructures()
 
@@ -79,7 +82,166 @@ output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(binom_test_results))
 
 
 #compare edge list outcome to WORD COUNT
+word_count_top_label = "id,matches,total,p-value"
+word_count_content = list()
+for edgelist_set in list_of_edgelist_sets:
+    edgelist_results = [word_count_top_label]
+
+    for curr_edgelist in edgelist_set:
+        l_nodes = [pair[constants.EDGE_LEFT] for pair in curr_edgelist.edge_list]
+        r_nodes = [pair[constants.EDGE_RIGHT] for pair in curr_edgelist.edge_list]
+        directions = [pair[constants.EDGE_KEYVALUE][constants.DIRECTION] for pair in curr_edgelist.edge_list]
+
+        pair_list = list(zip(l_nodes, r_nodes))
+        pred_list = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_length, pair_list))
+        
+        match_count = 0
+        for i in range(len(directions)):
+            if directions[i] == pred_list[i]:
+                match_count += 1
+
+        p_value = str(binom_test(match_count, len(directions)))
+
+        edgelist_results.append(",".join([curr_edgelist.source_id, str(match_count), str(len(directions)), p_value]))
+
+    word_count_content.append("\n".join(edgelist_results))
+
+output_content(constants.OUTPUT_BINOM_TESTS, "\n\n\nWORDCOUNT BINOM TESTS, BY EDGELISTS\n")
+output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(word_count_content))
+
+#sentence count
+sentence_top_label = "id,matches,total,p-value"
+sentence_count_content = list()
+for edgelist_set in list_of_edgelist_sets:
+    edgelist_results = [sentence_top_label]
+
+    for curr_edgelist in edgelist_set:
+        l_nodes = [pair[constants.EDGE_LEFT] for pair in curr_edgelist.edge_list]
+        r_nodes = [pair[constants.EDGE_RIGHT] for pair in curr_edgelist.edge_list]
+        directions = [pair[constants.EDGE_KEYVALUE][constants.DIRECTION] for pair in curr_edgelist.edge_list]
+
+        pair_list = list(zip(l_nodes, r_nodes))
+        pred_list = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_punctuation, pair_list))
+        
+        match_count = 0
+        for i in range(len(directions)):
+            if directions[i] == pred_list[i]:
+                match_count += 1
+
+        p_value = str(binom_test(match_count, len(directions)))
+
+        edgelist_results.append(",".join([curr_edgelist.source_id, str(match_count), str(len(directions)), p_value]))
+
+    sentence_count_content.append("\n".join(edgelist_results))
+
+output_content(constants.OUTPUT_BINOM_TESTS, "\n\n\nSENTENCE COUNT BINOM TESTS, BY EDGELISTS\n")
+output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(sentence_count_content))
+
 #compare to PRONOUN, CONJUNCTION and PRONOUN + CONJUNCTION count
+coherence_element_top_label = "id,pronoun matches (p-val),conjunction matches (p-val),all-types matches (p-val),total"
+coherence_element_count_content = list()
+for edgelist_set in list_of_edgelist_sets:
+    edgelist_results = [coherence_element_top_label]
+
+    for curr_edgelist in edgelist_set:
+        l_nodes = [pair[constants.EDGE_LEFT] for pair in curr_edgelist.edge_list]
+        r_nodes = [pair[constants.EDGE_RIGHT] for pair in curr_edgelist.edge_list]
+        directions = [pair[constants.EDGE_KEYVALUE][constants.DIRECTION] for pair in curr_edgelist.edge_list]
+
+        pair_list = list(zip(l_nodes, r_nodes))
+        pred_list_pron = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_pronouns, pair_list))
+        pred_list_conj = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_conjunctions, pair_list))
+        pred_list_all = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_all_coherence_elements, pair_list))
+        
+        pron_match_count = 0
+        conj_match_count = 0
+        all_match_count = 0
+        for i in range(len(directions)):
+            if directions[i] == pred_list_pron[i]:
+                pron_match_count += 1
+            if directions[i] == pred_list_conj[i]:
+                conj_match_count += 1
+            if directions[i] == pred_list_all[i]:
+                all_match_count += 1
+
+        p_value_pron = str(pron_match_count) + " (" +  str(binom_test(pron_match_count, len(directions)))  + ")"
+        p_value_conj = str(conj_match_count) + " (" +  str(binom_test(conj_match_count, len(directions)))  + ")"
+        p_value_all = str(all_match_count) + " (" +  str(binom_test(all_match_count, len(directions)))  + ")"
+
+        edgelist_results.append(",".join([curr_edgelist.source_id, p_value_pron, p_value_conj, p_value_all, str(len(directions))]))
+
+    coherence_element_count_content.append("\n".join(edgelist_results))
+
+output_content(constants.OUTPUT_BINOM_TESTS, "\n\n\nPRONOUN AND CONJUNCTION COUNT BINOM TESTS, BY EDGELISTS\n")
+output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(coherence_element_count_content))
+
+#compare number of types
+types_top_label = "id,matches,total,p-value"
+types_content = list()
+for edgelist_set in list_of_edgelist_sets:
+    edgelist_results = [types_top_label]
+
+    for curr_edgelist in edgelist_set:
+        l_nodes = [pair[constants.EDGE_LEFT] for pair in curr_edgelist.edge_list]
+        r_nodes = [pair[constants.EDGE_RIGHT] for pair in curr_edgelist.edge_list]
+        directions = [pair[constants.EDGE_KEYVALUE][constants.DIRECTION] for pair in curr_edgelist.edge_list]
+
+        pair_list = list(zip(l_nodes, r_nodes))
+        pred_list = list(curr_edgelist.sourcetext_object.predict_pairs(curr_edgelist.sourcetext_object.compare_number_of_types , pair_list))
+        
+        match_count = 0
+        for i in range(len(directions)):
+            if directions[i] == pred_list[i]:
+                match_count += 1
+
+        p_value = str(binom_test(match_count, len(directions)))
+
+        edgelist_results.append(",".join([curr_edgelist.source_id, str(match_count), str(len(directions)), p_value]))
+
+    types_content.append("\n".join(edgelist_results))
+
+output_content(constants.OUTPUT_BINOM_TESTS, "\n\n\nTYPE COUNT BINOM TESTS, BY EDGELISTS\n")
+output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(types_content))
+
+#generate agreement statistics:
+expected_frequencies_by_max_categories = [[1], #single annotator
+                                          [0.5, 0.5], #two annotators
+                                          [0.25, 0.75], #three annotators
+                                          [0.125, 0.5, 0.375], #four annotators
+                                          [0.0625, 0.3125, 0.625], #five annotators
+                                          [0.03125, 0.1875, 0.46875, 0.3125]] #six annotators
+
+agreement_test_labels = "number of annotators,counts (likelihood),chisquare test val,p-value"
+
+for merged_edgelist in list_of_merged_edgelists:
+    agreement_test_content = [agreement_test_labels]
+    agreement_counts_by_categories = [[0],
+                                      [0,0],
+                                      [0,0],
+                                      [0,0,0],
+                                      [0,0,0],
+                                      [0,0,0,0]]
+    for edge in merged_edgelist.edge_list:
+        number_of_annotators = len(edge[constants.EDGE_KEYVALUE][constants.AGREEMENT_COMPONENTS])
+        if number_of_annotators > 6:
+            continue
+        print(number_of_annotators)
+        print(edge[constants.EDGE_KEYVALUE])
+        agreement_counts_by_categories[number_of_annotators - 1][number_of_annotators - edge[constants.EDGE_KEYVALUE][constants.AGREEMENT]] += 1
+
+    for i in range(len(agreement_counts_by_categories)):
+        curr_freq_list = expected_frequencies_by_max_categories[i]
+        curr_count = agreement_counts_by_categories[i]
+
+        chisq, p_value = chisquare(curr_count, curr_freq_list)
+
+        count = ";".join(list(map(str, curr_count))) + " (" + ";".join(list(map(str, curr_freq_list))) + ")"
+
+        agreement_test_content.append(",".join([str(i), count, str(chisq), str(p_value)]))
+
+    output_content(constants.OUTPUT_AGREEMENT_TESTS, "\n" + merged_edgelist.source_id + "\n")
+    output_content(constants.OUTPUT_AGREEMENT_TESTS, "\n".join(agreement_test_content))
+
 
 
 #generate the graphs and check for cycles and transitivity

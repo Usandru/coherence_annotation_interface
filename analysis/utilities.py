@@ -92,41 +92,6 @@ def normalize_slider(graph):
     ## get the max absolute value of the weights, divide all weights by the max
     #return the copied graph
 
-def merge_slider(graphs):
-    out_graph = nx.DiGraph()
-
-    for graph in graphs:
-        out_graph.add_nodes_from(graph)
-        for edge in graph.edges:
-            out_graph.add_edges_from([edge])
-            if constants.WEIGHT_SUM in out_graph[edge[0], edge[1]]:
-                out_graph[edge[0], edge[1]][constants.WEIGHT_SUM] = graph[edge[0], edge[1]][constants.WEIGHT]
-                out_graph[edge[0], edge[1]][constants.WEIGHT_INSTANCES] = 1
-            else:
-                out_graph[edge[0], edge[1]][constants.WEIGHT_SUM] += graph[edge[0], edge[1]][constants.WEIGHT]
-                out_graph[edge[0], edge[1]][constants.WEIGHT_INSTANCES] += 1
-
-    return out_graph
-
-def merge_binary(graphs):
-    out_graph = nx.DiGraph()
-
-    for graph in graphs:
-        out_graph.add_nodes_from(graph)
-        for edge in graph.edges:
-            out_graph.add_edges_from([edge])
-            if constants.WEIGHT_SUM in out_graph[edge[0], edge[1]]:
-                out_graph[edge[0], edge[1]][constants.BINARY_INSTANCES] = 1
-            else:
-                out_graph[edge[0], edge[1]][constants.BINARY_INSTANCES] += 1
-
-    return out_graph
-
-def merge_both(graphs):
-    #ignore slider weights and merge purely by agreement? Essentially "merge binary" again.
-    pass
-
-
 def cycles_in_graph(graph):
     #use the cycle detector
     #return the nodes involved in the cycle

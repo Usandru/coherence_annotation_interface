@@ -1,6 +1,5 @@
 import constants
 import annotator
-import composite
 import sourcetexts
 import utilities
 import string

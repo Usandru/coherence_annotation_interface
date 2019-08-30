@@ -8,6 +8,7 @@ DATA_ANNOTATIONS = DATA + "annotations/" #the location of the annotations given 
 OUTPUT = "./output/" #location of analysis output
 OUTPUT_GENERAL_SUMMARY = OUTPUT + "general_summary.txt"
 OUTPUT_BINOM_TESTS = OUTPUT + "binom_tests.txt"
+OUTPUT_AGREEMENT_TESTS = OUTPUT + "agreement_tests.txt"
 GENERAL_OUTPUT = OUTPUT + "general_data_output.txt"
 TEXT_TYPES_OUTPUT = OUTPUT + "text_types.txt"
 
@@ -63,7 +64,7 @@ CSV_TAG = 5
 CSV_ID = 6
 
 #LIST CONSTANTS
-OUTPUT_PATHS = [GENERAL_OUTPUT, TEXT_TYPES_OUTPUT, OUTPUT_GENERAL_SUMMARY, OUTPUT_BINOM_TESTS]
+OUTPUT_PATHS = [GENERAL_OUTPUT, TEXT_TYPES_OUTPUT, OUTPUT_GENERAL_SUMMARY, OUTPUT_BINOM_TESTS, OUTPUT_AGREEMENT_TESTS]
 PUNCTUATION = [",", ".", "?", "!"] #partial, based on most common sentence boundary markers
 CONJUNCTIONS = ["og", "men", "eller", "at", "da", "fordi", "hvis", "når"] #partial, based on website lists
 # the following were harvested from the type-list by hand

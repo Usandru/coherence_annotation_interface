@@ -46,7 +46,7 @@ class sourcetexts:
                 self.text_id_dict[text_id] = dict()
 
                 data_text = text_data[constants.CSV_TEXT].replace("LINEBREAK", "")
-                self.text_id_dict[text_id][constants.TEXT] = data_text
+                self.text_id_dict[text_id][constants.TEXT] = data_text.casefold()
                 self.text_id_dict[text_id][constants.WORD_COUNT] = len(data_text.split())
 
                 sentence_count = 0
@@ -81,12 +81,71 @@ class sourcetexts:
             return constants.NULL
 
     def compare_punctuation(self, pair):
-        left_count = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
-        right_count = self.text_id_dict[pair[1]][constants.TEXT]
+        left_text = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
+        right_text = self.text_id_dict[pair[1]][constants.TEXT]
 
-        if left_count > right_count:
+        left_text_count = 0
+        right_text_count = 0
+        for item in constants.PUNCTUATION:
+            left_text_count += left_text.count(item)
+            right_text_count += right_text.count(item)
+
+        if left_text_count > right_text_count:
             return constants.LEFT
-        elif left_count < right_count:
+        elif left_text_count < right_text_count:
+            return constants.RIGHT
+        else:
+            return constants.NULL
+
+    def compare_pronouns(self, pair):
+        left_text = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
+        right_text = self.text_id_dict[pair[1]][constants.TEXT]
+
+        left_text_count = 0
+        right_text_count = 0
+        for item in constants.PURE_PRONOUNS:
+            left_text_count += left_text.count(item)
+            right_text_count += right_text.count(item)
+
+        if left_text_count > right_text_count:
+            return constants.LEFT
+        elif left_text_count < right_text_count:
+            return constants.RIGHT
+        else:
+            return constants.NULL
+
+    def compare_conjunctions(self, pair):
+        left_text = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
+        right_text = self.text_id_dict[pair[1]][constants.TEXT]
+
+        left_text_count = 0
+        right_text_count = 0
+        for item in constants.CONJUNCTIONS:
+            left_text_count += left_text.count(item)
+            right_text_count += right_text.count(item)
+
+        if left_text_count > right_text_count:
+            return constants.LEFT
+        elif left_text_count < right_text_count:
+            return constants.RIGHT
+        else:
+            return constants.NULL
+
+    def compare_all_coherence_elements(self, pair):
+        left_text = self.text_id_dict[pair[0]][constants.TEXT] #need something to actually count this
+        right_text = self.text_id_dict[pair[1]][constants.TEXT]
+
+        words_to_count = constants.PROPER_NOUNS + constants.PURE_PRONOUNS + constants.CONJUNCTIONS
+
+        left_text_count = 0
+        right_text_count = 0
+        for item in words_to_count:
+            left_text_count += left_text.count(item)
+            right_text_count += right_text.count(item)
+
+        if left_text_count > right_text_count:
+            return constants.LEFT
+        elif left_text_count < right_text_count:
             return constants.RIGHT
         else:
             return constants.NULL
