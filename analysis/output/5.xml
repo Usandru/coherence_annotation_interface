@@ -1,0 +1,483 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="agreement" attr.type="long" for="edge" id="d0"/>
+<graph edgedefault="directed"><node id="707 ORIGINAL"/>
+<node id="131 ORIGINAL"/>
+<node id="3237 ORIGINAL"/>
+<node id="1387 ORIGINAL"/>
+<node id="79 ORIGINAL"/>
+<node id="120 ORIGINAL"/>
+<node id="1906 ORIGINAL"/>
+<node id="3116 ORIGINAL"/>
+<node id="2015 PRONOUN-NP-O"/>
+<node id="131 PRONOUN-P-NP"/>
+<node id="120 PRONOUN-P-P"/>
+<node id="2094 ORIGINAL"/>
+<node id="1334 ORIGINAL"/>
+<node id="1085 ORIGINAL"/>
+<node id="2015 ORIGINAL"/>
+<node id="707 PRONOUN-NP-P"/>
+<node id="2746 ORIGINAL"/>
+<node id="1249 ORIGINAL"/>
+<node id="2495 ORIGINAL"/>
+<node id="573 ORIGINAL"/>
+<node id="1380 ORIGINAL"/>
+<node id="1184 PRONOUN-NP-ADJ"/>
+<node id="1627 PRONOUN-NP-NP"/>
+<node id="51 ORIGINAL"/>
+<node id="1627 ORIGINAL"/>
+<node id="375 ORIGINAL"/>
+<node id="2473 ORIGINAL"/>
+<node id="1249 PRONOUN-NP-NP"/>
+<node id="1991 ORIGINAL"/>
+<node id="1926 ORIGINAL"/>
+<node id="664 ORIGINAL"/>
+<node id="1184 ORIGINAL"/>
+<node id="1950 ORIGINAL"/>
+<node id="18 ORIGINAL"/>
+<node id="614 ORIGINAL"/>
+<node id="3173 ORIGINAL"/>
+<node id="789 PRONOUN-NP-P"/>
+<node id="713 PRONOUN-P-P"/>
+<node id="1908 ORIGINAL"/>
+<node id="663 PRONOUN-O-NP"/>
+<node id="1708 ORIGINAL"/>
+<node id="2638 ORIGINAL"/>
+<node id="600 ORIGINAL"/>
+<node id="663 ORIGINAL"/>
+<node id="789 ORIGINAL"/>
+<node id="713 ORIGINAL"/>
+<node id="2751 ORIGINAL"/>
+<node id="1058 ORIGINAL"/>
+<node id="600 PRONOUN-NP-O"/>
+<node id="1230 ORIGINAL"/>
+<node id="779 ORIGINAL"/>
+<node id="863 PRONOUN-P-P"/>
+<node id="2133 PRONOUN-P-NP"/>
+<node id="2798 ORIGINAL"/>
+<node id="1703 ORIGINAL"/>
+<node id="2635 ORIGINAL"/>
+<node id="874 PRONOUN-NP-NP"/>
+<node id="2018 ORIGINAL"/>
+<node id="2133 ORIGINAL"/>
+<node id="874 ORIGINAL"/>
+<node id="1788 ORIGINAL"/>
+<node id="1977 PRONOUN-P-NP"/>
+<node id="1977 ORIGINAL"/>
+<node id="1099 ORIGINAL"/>
+<node id="519 ORIGINAL"/>
+<node id="1185 ORIGINAL"/>
+<node id="779 PRONOUN-NP-P"/>
+<node id="863 ORIGINAL"/>
+<node id="3237 PRONOUN-NP-P"/>
+<node id="3222 ORIGINAL"/>
+<node id="3116 PRONOUN-NP-P"/>
+<node id="2096 ORIGINAL"/>
+<node id="2919 ORIGINAL"/>
+<node id="1380 PRONOUN-NP-NP"/>
+<node id="1926 PRONOUN-NP-P"/>
+<node id="2473 PRONOUN-P-NP"/>
+<node id="1629 ORIGINAL"/>
+<node id="2074 ORIGINAL"/>
+<node id="3173 PRONOUN-NP-O"/>
+<node id="2970 ORIGINAL"/>
+<node id="2638 PRONOUN-O-NP"/>
+<node id="3171 ORIGINAL"/>
+<node id="3158 ORIGINAL"/>
+<node id="2635 PRONOUN-P-P"/>
+<edge source="707 ORIGINAL" target="1085 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1906 ORIGINAL" target="3237 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2015 PRONOUN-NP-O" target="120 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2015 PRONOUN-NP-O" target="707 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2015 PRONOUN-NP-O" target="2015 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="131 PRONOUN-P-NP" target="131 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="131 PRONOUN-P-NP" target="3116 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="131 PRONOUN-P-NP" target="79 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="131 PRONOUN-P-NP" target="120 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="120 PRONOUN-P-P" target="120 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="120 PRONOUN-P-P" target="2096 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2094 ORIGINAL" target="79 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1334 ORIGINAL" target="1387 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1334 ORIGINAL" target="131 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1334 ORIGINAL" target="2746 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1085 ORIGINAL" target="1906 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1085 ORIGINAL" target="2096 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2015 ORIGINAL" target="2094 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="707 PRONOUN-NP-P" target="707 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="707 PRONOUN-NP-P" target="1387 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2746 ORIGINAL" target="1387 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2746 ORIGINAL" target="3116 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1249 ORIGINAL" target="664 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2495 ORIGINAL" target="2919 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2495 ORIGINAL" target="2473 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2495 ORIGINAL" target="375 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="573 ORIGINAL" target="664 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1380 ORIGINAL" target="1926 PRONOUN-NP-P">
+  <data key="d0">1</data>
+</edge>
+<edge source="1380 ORIGINAL" target="2074 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1380 ORIGINAL" target="1184 PRONOUN-NP-ADJ">
+  <data key="d0">1</data>
+</edge>
+<edge source="1184 PRONOUN-NP-ADJ" target="2473 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1184 PRONOUN-NP-ADJ" target="1184 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1627 PRONOUN-NP-NP" target="1249 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1627 PRONOUN-NP-NP" target="2919 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1627 PRONOUN-NP-NP" target="1627 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1627 PRONOUN-NP-NP" target="2473 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="51 ORIGINAL" target="2473 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="51 ORIGINAL" target="1184 PRONOUN-NP-ADJ">
+  <data key="d0">1</data>
+</edge>
+<edge source="51 ORIGINAL" target="1991 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="51 ORIGINAL" target="2074 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1249 PRONOUN-NP-NP" target="1249 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1249 PRONOUN-NP-NP" target="2919 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1991 ORIGINAL" target="2074 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1991 ORIGINAL" target="1926 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1184 ORIGINAL" target="375 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1950 ORIGINAL" target="3173 PRONOUN-NP-O">
+  <data key="d0">1</data>
+</edge>
+<edge source="1950 ORIGINAL" target="18 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="18 ORIGINAL" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="18 ORIGINAL" target="1908 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="614 ORIGINAL" target="1230 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="789 PRONOUN-NP-P" target="2970 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="789 PRONOUN-NP-P" target="789 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="713 PRONOUN-P-P" target="3173 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="713 PRONOUN-P-P" target="2970 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1908 ORIGINAL" target="1950 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 PRONOUN-O-NP" target="1950 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 PRONOUN-O-NP" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 PRONOUN-O-NP" target="3173 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 ORIGINAL" target="1908 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 ORIGINAL" target="2638 PRONOUN-O-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 ORIGINAL" target="1708 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 ORIGINAL" target="663 PRONOUN-O-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="789 ORIGINAL" target="614 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="789 ORIGINAL" target="713 PRONOUN-P-P">
+  <data key="d0">1</data>
+</edge>
+<edge source="713 ORIGINAL" target="713 PRONOUN-P-P">
+  <data key="d0">1</data>
+</edge>
+<edge source="2751 ORIGINAL" target="1708 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2751 ORIGINAL" target="2970 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2751 ORIGINAL" target="3173 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1058 ORIGINAL" target="614 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1058 ORIGINAL" target="713 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1058 ORIGINAL" target="1230 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="600 PRONOUN-NP-O" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="600 PRONOUN-NP-O" target="1230 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="779 ORIGINAL" target="1099 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="779 ORIGINAL" target="1977 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="863 PRONOUN-P-P" target="3171 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="863 PRONOUN-P-P" target="863 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="863 PRONOUN-P-P" target="779 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="863 PRONOUN-P-P" target="874 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2133 PRONOUN-P-NP" target="2635 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2133 PRONOUN-P-NP" target="874 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2133 PRONOUN-P-NP" target="2133 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2798 ORIGINAL" target="3171 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2798 ORIGINAL" target="1185 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1703 ORIGINAL" target="1977 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1703 ORIGINAL" target="3158 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2635 ORIGINAL" target="1977 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="874 PRONOUN-NP-NP" target="874 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2018 ORIGINAL" target="874 PRONOUN-NP-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="2018 ORIGINAL" target="2133 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="2018 ORIGINAL" target="3158 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2018 ORIGINAL" target="1703 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2133 ORIGINAL" target="2798 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1788 ORIGINAL" target="2635 PRONOUN-P-P">
+  <data key="d0">1</data>
+</edge>
+<edge source="1788 ORIGINAL" target="1099 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1788 ORIGINAL" target="519 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1788 ORIGINAL" target="1977 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="1977 ORIGINAL" target="1977 PRONOUN-P-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="519 ORIGINAL" target="1099 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="519 ORIGINAL" target="863 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1185 ORIGINAL" target="3171 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1185 ORIGINAL" target="874 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="779 PRONOUN-NP-P" target="3171 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="779 PRONOUN-NP-P" target="779 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3237 PRONOUN-NP-P" target="707 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3237 PRONOUN-NP-P" target="3237 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3237 PRONOUN-NP-P" target="1387 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3237 PRONOUN-NP-P" target="3116 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3222 ORIGINAL" target="79 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3222 ORIGINAL" target="120 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3222 ORIGINAL" target="2094 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3116 PRONOUN-NP-P" target="3116 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3116 PRONOUN-NP-P" target="79 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2096 ORIGINAL" target="2015 PRONOUN-NP-O">
+  <data key="d0">1</data>
+</edge>
+<edge source="2096 ORIGINAL" target="1906 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2919 ORIGINAL" target="375 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1380 PRONOUN-NP-NP" target="1380 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1380 PRONOUN-NP-NP" target="573 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1926 PRONOUN-NP-P" target="573 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1926 PRONOUN-NP-P" target="1249 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1926 PRONOUN-NP-P" target="1926 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2473 PRONOUN-P-NP" target="2473 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1629 ORIGINAL" target="1627 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1629 ORIGINAL" target="573 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="1629 ORIGINAL" target="664 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3173 PRONOUN-NP-O" target="3173 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2970 ORIGINAL" target="1708 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 PRONOUN-O-NP" target="789 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 PRONOUN-O-NP" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 PRONOUN-O-NP" target="1230 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3158 ORIGINAL" target="2635 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="2635 PRONOUN-P-P" target="2635 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+</graph></graphml>

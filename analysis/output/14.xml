@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key attr.name="agreement" attr.type="long" for="edge" id="d0"/>
+<graph edgedefault="directed"><node id="1708 ORIGINAL"/>
+<node id="713 PRONOUN-P-P"/>
+<node id="663 ORIGINAL"/>
+<node id="713 ORIGINAL"/>
+<node id="1908 ORIGINAL"/>
+<node id="600 ORIGINAL"/>
+<node id="663 PRONOUN-O-NP"/>
+<node id="600 PRONOUN-NP-O"/>
+<node id="18 ORIGINAL"/>
+<node id="2970 ORIGINAL"/>
+<node id="3173 ORIGINAL"/>
+<node id="1058 ORIGINAL"/>
+<node id="2638 ORIGINAL"/>
+<node id="1230 ORIGINAL"/>
+<node id="1950 ORIGINAL"/>
+<edge source="1708 ORIGINAL" target="2970 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 ORIGINAL" target="1708 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="713 ORIGINAL" target="1058 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="663 PRONOUN-O-NP" target="1950 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="600 PRONOUN-NP-O" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="600 PRONOUN-NP-O" target="1230 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="18 ORIGINAL" target="600 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+<edge source="3173 ORIGINAL" target="713 PRONOUN-P-P">
+  <data key="d0">1</data>
+</edge>
+<edge source="3173 ORIGINAL" target="663 PRONOUN-O-NP">
+  <data key="d0">1</data>
+</edge>
+<edge source="2638 ORIGINAL" target="1908 ORIGINAL">
+  <data key="d0">1</data>
+</edge>
+</graph></graphml>

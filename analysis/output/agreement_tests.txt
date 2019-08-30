@@ -1,9 +1,57 @@
 
 0_minimalpaironly_MERGED_1_minimalpaironly_MERGED_3_minimalpaironly_MERGED_4_minimalpaironly_MERGED_5_minimalpaironly_MERGED_6_minimalpaironly_MERGED_8_minimalpaironly_MERGED_9_minimalpaironly_MERGED_10_minimalpaironly_MERGED_11_minimalpaironly_MERGED_12_minimalpaironly_MERGED_13_minimalpaironly_MERGED_14_minimalpaironly
 number of annotators,counts (likelihood),chisquare test val,p-value
-0,0 (1),1.0,nan
-1,0;0 (0.5;0.5),1.0,0.31731050786291115
-2,0;0 (0.25;0.75),1.0,0.31731050786291115
-3,0;1;0 (0.125;0.5;0.375),1.0,0.6065306597126334
-4,1;3;1 (0.0625;0.3125;0.625),37.4,7.562984118265138e-09
-5,4;6;4;2 (0.03125;0.1875;0.46875;0.3125),719.9333333333333,9.991971597671475e-156
+1,0 (1),nan,nan
+2,0;0 (0.5;0.5),nan,nan
+3,0;0 (0.25;0.75),nan,nan
+4,0;1;0 (0.125;0.5;0.375),1.0,0.6065306597126334
+5,1;3;1 (0.0625;0.3125;0.625),4.28,0.1176548430217792
+6,4;6;4;2 (0.03125;0.1875;0.46875;0.3125),30.933333333333334,8.779708423460174e-07
+0_MERGED_1_MERGED_3_MERGED_4_MERGED_5_MERGED_6_MERGED_8_MERGED_9_MERGED_10_MERGED_11_MERGED_12_MERGED_13_MERGED_14
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,0 (1),nan,nan
+2,17;10 (0.5;0.5),1.8148148148148149,0.17793172526825074
+3,63;115 (0.25;0.75),10.254681647940075,0.0013633815919647017
+4,2;6;2 (0.125;0.5;0.375),1.4666666666666668,0.4803053010897994
+5,1;3;1 (0.0625;0.3125;0.625),4.28,0.1176548430217792
+6,4;6;4;2 (0.03125;0.1875;0.46875;0.3125),30.933333333333334,8.779708423460174e-07
+0_modefilteron:slider_MERGED_1_modefilteron:slider_MERGED_3_modefilteron:slider_MERGED_4_modefilteron:slider_MERGED_5_modefilteron:slider_MERGED_6_modefilteron:slider_MERGED_8_modefilteron:slider_MERGED_9_modefilteron:slider_MERGED_10_modefilteron:slider_MERGED_11_modefilteron:slider_MERGED_12_modefilteron:slider_MERGED_13_modefilteron:slider_MERGED_14_modefilteron:slider
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,1 (1),0.0,nan
+2,13;11 (0.5;0.5),0.16666666666666666,0.6830913983096086
+3,40;61 (0.25;0.75),11.488448844884488,0.0007003005755556
+4,0;3;2 (0.125;0.5;0.375),0.7333333333333333,0.6930406200864416
+5,0;0;0 (0.0625;0.3125;0.625),nan,nan
+6,0;0;0;0 (0.03125;0.1875;0.46875;0.3125),nan,nan
+0_modefilteron:binary_MERGED_1_modefilteron:binary_MERGED_3_modefilteron:binary_MERGED_4_modefilteron:binary_MERGED_5_modefilteron:binary_MERGED_6_modefilteron:binary_MERGED_8_modefilteron:binary_MERGED_9_modefilteron:binary_MERGED_10_modefilteron:binary_MERGED_11_modefilteron:binary_MERGED_12_modefilteron:binary_MERGED_13_modefilteron:binary_MERGED_14_modefilteron:binary
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,3 (1),0.0,nan
+2,10;4 (0.5;0.5),2.5714285714285716,0.10880943004054605
+3,41;71 (0.25;0.75),8.047619047619047,0.004556349803185136
+4,2;2;2 (0.125;0.5;0.375),2.4444444444444446,0.29457482831010723
+5,0;0;0 (0.0625;0.3125;0.625),nan,nan
+6,0;0;0;0 (0.03125;0.1875;0.46875;0.3125),nan,nan
+0_casttooriginal_MERGED_1_casttooriginal_MERGED_3_casttooriginal_MERGED_4_casttooriginal_MERGED_5_casttooriginal_MERGED_6_casttooriginal_MERGED_8_casttooriginal_MERGED_9_casttooriginal_MERGED_10_casttooriginal_MERGED_11_casttooriginal_MERGED_12_casttooriginal_MERGED_13_casttooriginal_MERGED_14_casttooriginal
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,0 (1),nan,nan
+2,9;6 (0.5;0.5),0.6,0.4385780260809997
+3,32;69 (0.25;0.75),2.405940594059406,0.12087545165055069
+4,1;1;1 (0.125;0.5;0.375),1.2222222222222223,0.5427474811642219
+5,3;7;2 (0.0625;0.3125;0.625),13.6,0.001113775147844803
+6,5;9;11;5 (0.03125;0.1875;0.46875;0.3125),22.337777777777777,5.5481933349817226e-05
+0_modefilteron:slider_casttooriginal_MERGED_1_modefilteron:slider_casttooriginal_MERGED_3_modefilteron:slider_casttooriginal_MERGED_4_modefilteron:slider_casttooriginal_MERGED_5_modefilteron:slider_casttooriginal_MERGED_6_modefilteron:slider_casttooriginal_MERGED_8_modefilteron:slider_casttooriginal_MERGED_9_modefilteron:slider_casttooriginal_MERGED_10_modefilteron:slider_casttooriginal_MERGED_11_modefilteron:slider_casttooriginal_MERGED_12_modefilteron:slider_casttooriginal_MERGED_13_modefilteron:slider_casttooriginal_MERGED_14_modefilteron:slider_casttooriginal
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,0 (1),nan,nan
+2,10;9 (0.5;0.5),0.05263157894736842,0.8185458083820435
+3,31;52 (0.25;0.75),6.7510040160642575,0.009369494584676705
+4,0;3;1 (0.125;0.5;0.375),1.1666666666666667,0.5580351457700471
+5,0;0;0 (0.0625;0.3125;0.625),nan,nan
+6,0;0;0;0 (0.03125;0.1875;0.46875;0.3125),nan,nan
+0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal
+number of annotators,counts (likelihood),chisquare test val,p-value
+1,1 (1),0.0,nan
+2,7;3 (0.5;0.5),1.6,0.20590321073206466
+3,32;60 (0.25;0.75),4.695652173913044,0.030239021016148563
+4,2;3;1 (0.125;0.5;0.375),2.7777777777777777,0.24935220877729622
+5,0;0;0 (0.0625;0.3125;0.625),nan,nan
+6,0;0;0;0 (0.03125;0.1875;0.46875;0.3125),nan,nan

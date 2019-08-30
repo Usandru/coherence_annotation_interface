@@ -81,7 +81,8 @@ def compute_agreement_and_direction(left_node, right_node, list_of_agreement_com
     if sum(tally.values()) == 0:
         return len(list_of_agreement_components), return_direction #ie. there are only nulls - which obviously all agree with one another
     else:
-        return max(tally.values()), return_direction
+        return max(max(tally.values()), len(list_of_agreement_components) - sum(tally.values())), return_direction
+        #return max(tally.values()), return_direction
 
 #the same problem as above holds here too
 def compute_slider_weight_and_direction(left_node, right_node, list_of_agreement_components):

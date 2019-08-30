@@ -386,3 +386,20 @@ id,matches,total,p-value
 13_modefilteron:binary_casttooriginal,8,26,0.0755186975002289
 14_modefilteron:binary_casttooriginal,2,5,1.0
 0_modefilteron:binary_casttooriginal_MERGED_1_modefilteron:binary_casttooriginal_MERGED_3_modefilteron:binary_casttooriginal_MERGED_4_modefilteron:binary_casttooriginal_MERGED_5_modefilteron:binary_casttooriginal_MERGED_6_modefilteron:binary_casttooriginal_MERGED_8_modefilteron:binary_casttooriginal_MERGED_9_modefilteron:binary_casttooriginal_MERGED_10_modefilteron:binary_casttooriginal_MERGED_11_modefilteron:binary_casttooriginal_MERGED_12_modefilteron:binary_casttooriginal_MERGED_13_modefilteron:binary_casttooriginal_MERGED_14_modefilteron:binary_casttooriginal,49,109,0.33818541219666115
+
+
+ MINIMAL PAIR BINOM TESTSid,matches,total,p-value
+0_minimalpaironly,4,6,0.6875000000000002
+1_minimalpaironly,8,12,0.3876953125000001
+3_minimalpaironly,2,6,0.6875000000000002
+4_minimalpaironly,9,12,0.14599609375000003
+5_minimalpaironly,17,24,0.06391465663909912
+6_minimalpaironly,7,12,0.7744140625000003
+8_minimalpaironly,16,24,0.15158963203430173
+9_minimalpaironly,4,5,0.375
+10_minimalpaironly,3,6,1.0
+11_minimalpaironly,7,12,0.7744140625000003
+12_minimalpaironly,5,6,0.21875000000000003
+13_minimalpaironly,10,12,0.038574218750000014
+14_minimalpaironly,0,2,0.5
+14_minimalpaironly,17,2,0.06391465663909912

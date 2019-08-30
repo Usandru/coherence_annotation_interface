@@ -223,27 +223,94 @@ for merged_edgelist in list_of_merged_edgelists:
                                       [0,0,0,0]]
     for edge in merged_edgelist.edge_list:
         number_of_annotators = len(edge[constants.EDGE_KEYVALUE][constants.AGREEMENT_COMPONENTS])
-        if number_of_annotators > 6:
+        if number_of_annotators > 6 or edge[constants.EDGE_KEYVALUE][constants.AGREEMENT] / number_of_annotators < 0.5:
             continue
-        print(number_of_annotators)
-        print(edge[constants.EDGE_KEYVALUE])
         agreement_counts_by_categories[number_of_annotators - 1][number_of_annotators - edge[constants.EDGE_KEYVALUE][constants.AGREEMENT]] += 1
 
     for i in range(len(agreement_counts_by_categories)):
         curr_freq_list = expected_frequencies_by_max_categories[i]
         curr_count = agreement_counts_by_categories[i]
 
-        chisq, p_value = chisquare(curr_count, curr_freq_list)
+        count_sum = sum(curr_count)
+
+        expected_freq_list = [count_sum * freq for freq in curr_freq_list]
+
+        chisq, p_value = chisquare(curr_count, expected_freq_list)
 
         count = ";".join(list(map(str, curr_count))) + " (" + ";".join(list(map(str, curr_freq_list))) + ")"
 
-        agreement_test_content.append(",".join([str(i), count, str(chisq), str(p_value)]))
+        agreement_test_content.append(",".join([str(i+1), count, str(chisq), str(p_value)]))
 
     output_content(constants.OUTPUT_AGREEMENT_TESTS, "\n" + merged_edgelist.source_id + "\n")
     output_content(constants.OUTPUT_AGREEMENT_TESTS, "\n".join(agreement_test_content))
 
+#minimal pair testing
+minimal_pair_dict = dict([(pair[0], pair[2]) for pair in constants.EXPECTED_MINIMAL_PAIR_OUTCOMES])
+minimal_pair_count_by_node = dict([(pair[0], 0) for pair in constants.EXPECTED_MINIMAL_PAIR_OUTCOMES])
+minimal_pair_count_all = dict([(pair[0], 0) for pair in constants.EXPECTED_MINIMAL_PAIR_OUTCOMES])
 
+minimal_pair_top_label = "id,matches,total,p-value"
+minimal_pair_content = [minimal_pair_top_label]
+
+for minimal_pair_edgelist in minimal_pair_set[:-1]:
+    count = 0
+    for edge in minimal_pair_edgelist.edge_list:
+        minimal_pair_count_all[edge[0]] += 1
+        if minimal_pair_dict[edge[0]] == edge[constants.EDGE_KEYVALUE][constants.DIRECTION]:
+            minimal_pair_count_by_node[edge[0]] += 1
+            count += 1
+    
+    p_value = binom_test(count, len(minimal_pair_edgelist.edge_list))
+
+    minimal_pair_content.append(",".join([minimal_pair_edgelist.source_id, str(count), str(len(minimal_pair_edgelist.edge_list)), str(p_value)]))
+
+count = 0
+for edge in merged_minimal_pair.edge_list:
+    if minimal_pair_dict[edge[0]] == edge[constants.EDGE_KEYVALUE][constants.DIRECTION]:
+        count += 1
+p_value = binom_test(count, len(merged_minimal_pair.edge_list))
+minimal_pair_content.append(",".join([minimal_pair_edgelist.source_id, str(count), str(len(minimal_pair_edgelist.edge_list)), str(p_value)]))
+
+output_content(constants.OUTPUT_BINOM_TESTS, "\n\n\n MINIMAL PAIR BINOM TESTS")
+output_content(constants.OUTPUT_BINOM_TESTS, "\n".join(minimal_pair_content))
+
+for node in constants.EXPECTED_MINIMAL_PAIR_OUTCOMES:
+    pass
+print(minimal_pair_count_by_node)
+print(minimal_pair_count_all)
 
 #generate the graphs and check for cycles and transitivity
+base_graphs = list()
+base_graphs_cycles = list()
+for curr_edgelist in list_of_edgelist_sets[0]:
+    all_nodes = [edge[0] for edge in curr_edgelist.edge_list] + [edge[1] for edge in curr_edgelist.edge_list]
+    curr_digraph = networkx.DiGraph()
+    curr_digraph.add_nodes_from(all_nodes)
+    for edge in curr_edgelist.edge_list:
+        if edge[constants.EDGE_KEYVALUE][constants.DIRECTION] == constants.LEFT:
+            curr_digraph.add_edge(edge[constants.EDGE_RIGHT], edge[constants.EDGE_LEFT], agreement=edge[constants.EDGE_KEYVALUE][constants.AGREEMENT])
+        elif edge[constants.EDGE_KEYVALUE][constants.DIRECTION] == constants.RIGHT:
+            curr_digraph.add_edge(edge[constants.EDGE_LEFT], edge[constants.EDGE_RIGHT], agreement=edge[constants.EDGE_KEYVALUE][constants.AGREEMENT])
+
+    base_graphs.append(curr_digraph)
+    base_graphs_cycles.append(list(networkx.algorithms.simple_cycles(curr_digraph)))
+    networkx.write_graphml(curr_digraph, constants.OUTPUT + curr_edgelist.source_id + ".xml")
+
+no_minimal_pair_graphs = list()
+no_minimal_pair_graphs_cycles = list()
+for curr_edgelist in list_of_edgelist_sets[3]:
+    all_nodes = [edge[0] for edge in curr_edgelist.edge_list] + [edge[1] for edge in curr_edgelist.edge_list]
+    curr_digraph = networkx.DiGraph()
+    curr_digraph.add_nodes_from(all_nodes)
+    for edge in curr_edgelist.edge_list:
+        if edge[constants.EDGE_KEYVALUE][constants.DIRECTION] == constants.LEFT:
+            curr_digraph.add_edge(edge[constants.EDGE_RIGHT], edge[constants.EDGE_LEFT], agreement=edge[constants.EDGE_KEYVALUE][constants.AGREEMENT])
+        elif edge[constants.EDGE_KEYVALUE][constants.DIRECTION] == constants.RIGHT:
+            curr_digraph.add_edge(edge[constants.EDGE_LEFT], edge[constants.EDGE_RIGHT], agreement=edge[constants.EDGE_KEYVALUE][constants.AGREEMENT])
+
+    no_minimal_pair_graphs.append(curr_digraph)
+    no_minimal_pair_graphs_cycles.append(list(networkx.algorithms.simple_cycles(curr_digraph)))
+    networkx.write_graphml(curr_digraph, constants.OUTPUT + curr_edgelist.source_id + ".xml")
+
 
 #run the analysis on time
